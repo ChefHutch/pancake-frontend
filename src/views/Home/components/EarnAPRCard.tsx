@@ -36,9 +36,8 @@ const EarnAPRCard = () => {
       // Filter inactive farms, because their theoretical APR is super high. In practice, it's 0.
       .filter((farm) => farm.pid !== 0 && farm.multiplier !== '0X')
       .map((farm) => {
-        if (farm.lpTotalInQuoteToken && farm.quoteToken.price) {
-          const quoteTokenPriceUsd = farm.quoteToken.price
-          const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
+        if (farm.lpTotalInQuoteToken && farm.quoteToken.busdPrice) {
+          const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteToken.busdPrice)
           return getFarmApr(farm.poolWeight, cakePrice, totalLiquidity)
         }
         return null
