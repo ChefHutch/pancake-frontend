@@ -63,22 +63,24 @@ const fetchFarms = async (farmsToFetch: FarmConfig[]) => {
       // Total staked in LP, in quote token value
       const lpTotalInQuoteToken = quoteTokenAmountMc.times(new BigNumber(2))
 
-      const [info, totalAllocPoint] = farmConfig.pid
-        ? await multicall(masterchefABI, [
-            {
-              address: getMasterChefAddress(),
-              name: 'poolInfo',
-              params: [farmConfig.pid],
-            },
-            {
-              address: getMasterChefAddress(),
-              name: 'totalAllocPoint',
-            },
-          ])
-        : [BIG_ZERO, BIG_ZERO]
+      // Only make masterchef calls if farm has pid
+      const [info, totalAllocPoint] =
+        farmConfig.pid || farmConfig.pid === 0
+          ? await multicall(masterchefABI, [
+              {
+                address: getMasterChefAddress(),
+                name: 'poolInfo',
+                params: [farmConfig.pid],
+              },
+              {
+                address: getMasterChefAddress(),
+                name: 'totalAllocPoint',
+              },
+            ])
+          : [null, null]
 
-      const allocPoint = new BigNumber(info?.allocPoint?._hex)
-      const poolWeight = allocPoint.div(new BigNumber(totalAllocPoint))
+      const allocPoint = info ? new BigNumber(info.allocPoint?._hex) : BIG_ZERO
+      const poolWeight = totalAllocPoint ? allocPoint.div(new BigNumber(totalAllocPoint)) : BIG_ZERO
 
       return {
         ...farmConfig,
