@@ -30,7 +30,7 @@ import { getCanClaim } from './predictions/helpers'
 import { transformPool } from './pools/helpers'
 import { fetchPoolsStakingLimitsAsync } from './pools'
 import { fetchFarmUserDataAsync, nonArchivedFarms } from './farms'
-import { fetchPublicLotteryData, fetchLotteryById, fetchUserTickets } from './lottery'
+import { fetchPublicLotteryData, fetchCurrentLottery, fetchUserTickets } from './lottery'
 
 export const usePollFarmsData = (includeArchive = false) => {
   const dispatch = useAppDispatch()
@@ -490,7 +490,7 @@ export const useFetchLottery = () => {
   // get public data for current lottery
   useEffect(() => {
     if (currentLotteryId) {
-      dispatch(fetchLotteryById({ lotteryId: currentLotteryId }))
+      dispatch(fetchCurrentLottery({ currentLotteryId }))
     }
   }, [dispatch, currentLotteryId, fastRefresh, account])
 }
@@ -505,6 +505,7 @@ export const useLottery = () => {
   const maxNumberTicketsPerBuyAsString = useSelector((state: State) => state.lottery.maxNumberTicketsPerBuy)
 
   const {
+    isLoading,
     status,
     startTime,
     endTime,
@@ -534,6 +535,7 @@ export const useLottery = () => {
     currentLotteryId,
     maxNumberTicketsPerBuy,
     currentRound: {
+      isLoading,
       status,
       startTime,
       endTime,
