@@ -42,6 +42,12 @@
         "internalType": "uint256",
         "name": "lotteryId",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "firstTicketIdNextLottery",
+        "type": "uint256"
       }
     ],
     "name": "LotteryClose",
@@ -99,6 +105,30 @@
         "internalType": "uint256",
         "name": "lotteryId",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "startTime",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "endTime",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "priceTicketInCake",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "firstTicketId",
+        "type": "uint256"
       }
     ],
     "name": "LotteryOpen",
@@ -155,6 +185,18 @@
         "indexed": false,
         "internalType": "uint256",
         "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "lotteryId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "numberTickets",
         "type": "uint256"
       }
     ],
@@ -438,7 +480,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "lastTicketId",
+        "name": "firstTicketIdNextLottery",
         "type": "uint256"
       },
       {
@@ -567,7 +609,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_lengthLottery",
+        "name": "_endTime",
         "type": "uint256"
       },
       {
@@ -698,12 +740,22 @@
         "type": "uint256"
       }
     ],
-    "name": "viewUserTicketsForLottery",
+    "name": "viewUserTicketNumbersAndStatusesForLottery",
     "outputs": [
       {
         "internalType": "uint256[]",
         "name": "",
         "type": "uint256[]"
+      },
+      {
+        "internalType": "uint32[]",
+        "name": "",
+        "type": "uint32[]"
+      },
+      {
+        "internalType": "bool[]",
+        "name": "",
+        "type": "bool[]"
       },
       {
         "internalType": "uint256",
