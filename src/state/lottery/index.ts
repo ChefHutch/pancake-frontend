@@ -102,14 +102,17 @@ export const fetchPublicData = async () => {
 
 export const fetchTickets = async (account, lotteryId, cursor) => {
   try {
-    const userTickets = await lotteryContract.methods.viewUserTicketsForLottery(account, lotteryId, cursor, 1000).call()
+    const userTickets = await lotteryContract.methods
+      .viewUserTicketNumbersAndStatusesForLottery(account, lotteryId, cursor, 1000)
+      .call()
     const ticketIds = userTickets[0]
-    const ticketNumbersAndStatuses = await lotteryContract.methods.viewNumbersAndStatusesForTicketIds(ticketIds).call()
+    const ticketNumbers = userTickets[1]
+    const ticketStatuses = userTickets[3]
     const completeTicketData = ticketIds.map((ticketId, index) => {
       return {
         id: ticketId,
-        number: ticketNumbersAndStatuses[0][index],
-        status: ticketNumbersAndStatuses[1][index],
+        number: ticketNumbers[0][index],
+        status: ticketStatuses[1][index],
       }
     })
     return completeTicketData
