@@ -31,6 +31,7 @@ import { transformPool } from './pools/helpers'
 import { fetchPoolsStakingLimitsAsync } from './pools'
 import { fetchFarmUserDataAsync, nonArchivedFarms } from './farms'
 import { fetchPublicLotteryData, fetchCurrentLottery, fetchUserTickets } from './lottery'
+import { getPastLotteries, getUserPastLotteries } from './lottery/helpers'
 
 export const usePollFarmsData = (includeArchive = false) => {
   const dispatch = useAppDispatch()
@@ -477,13 +478,25 @@ export const useFetchLottery = () => {
   const currentLotteryId = useGetCurrentLotteryId()
 
   useEffect(() => {
+    const fetchPublicLotteryHistory = async () => {
+      const { lotteries } = await getPastLotteries()
+      return lotteries
+    }
+    fetchPublicLotteryHistory()
     dispatch(fetchPublicLotteryData())
   }, [dispatch])
 
-  // get user data for current lottery
+  // get user data for current and past lotteries
   useEffect(() => {
+    const fetchUserLotteryHistory = async () => {
+      const userLottos = await getUserPastLotteries(account)
+      return userLottos
+    }
     if (account && currentLotteryId) {
       dispatch(fetchUserTickets({ account, lotteryId: currentLotteryId }))
+    }
+    if (account) {
+      fetchUserLotteryHistory()
     }
   }, [dispatch, currentLotteryId, account])
 
