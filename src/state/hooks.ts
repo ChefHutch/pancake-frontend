@@ -510,7 +510,7 @@ export const useLottery = () => {
     startTime,
     endTime,
     priceTicketInCake: priceTicketInCakeAsString,
-    discountDivisor,
+    discountDivisor: discountDivisorAsString,
     treasuryFee,
     firstTicketId,
     lastTicketId,
@@ -522,6 +522,10 @@ export const useLottery = () => {
   const maxNumberTicketsPerBuy = useMemo(() => {
     return new BigNumber(maxNumberTicketsPerBuyAsString)
   }, [maxNumberTicketsPerBuyAsString])
+
+  const discountDivisor = useMemo(() => {
+    return new BigNumber(discountDivisorAsString)
+  }, [discountDivisorAsString])
 
   const priceTicketInCake = useMemo(() => {
     return new BigNumber(priceTicketInCakeAsString)
