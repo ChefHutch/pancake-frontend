@@ -2,9 +2,11 @@ import BigNumber from 'bignumber.js'
 import { request, gql } from 'graphql-request'
 import { GRAPH_API_LOTTERY } from 'config/constants/endpoints'
 import { LotteryStatus, LotteryTicket } from 'config/constants/types'
+import lotteryV2Abi from 'config/abi/lotteryV2.json'
+import { getLotteryV2Address } from 'utils/addressHelpers'
+import { multicallv2 } from 'utils/multicall'
 import { UserLotteryHistory, PastLotteryRound, LotteryRound } from 'state/types'
 import { getLotteryV2Contract } from 'utils/contractHelpers'
-import makeBatchRequest from 'utils/makeBatchRequest'
 
 const lotteryContract = getLotteryV2Contract()
 
@@ -67,13 +69,18 @@ export const fetchLottery = async (lotteryId: string): Promise<LotteryRound> => 
 
 export const fetchPublicData = async () => {
   try {
-    const [currentLotteryId, maxNumberTicketsPerBuyOrClaim] = (await makeBatchRequest([
-      lotteryContract.methods.currentLotteryId().call,
-      lotteryContract.methods.maxNumberTicketsPerBuyOrClaim().call,
-    ])) as [string, string]
+    const calls = ['currentLotteryId', 'maxNumberTicketsPerBuyOrClaim'].map((method) => ({
+      address: getLotteryV2Address(),
+      name: method,
+    }))
+    const [[currentLotteryId], [maxNumberTicketsPerBuyOrClaim]] = (await multicallv2(
+      lotteryV2Abi,
+      calls,
+    )) as BigNumber[][]
+
     return {
-      currentLotteryId,
-      maxNumberTicketsPerBuyOrClaim,
+      currentLotteryId: currentLotteryId ? currentLotteryId.toString() : null,
+      maxNumberTicketsPerBuyOrClaim: maxNumberTicketsPerBuyOrClaim ? maxNumberTicketsPerBuyOrClaim.toString() : null,
     }
   } catch (error) {
     return {
