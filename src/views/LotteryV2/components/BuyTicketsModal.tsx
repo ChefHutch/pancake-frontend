@@ -290,7 +290,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
 
         <Text mt="24px" fontSize="12px" color="textSubtle">
           {t(
-            'The CAKE ticket price is set before each lottery round starts, equal to $1 at that time. Ticket purchases are final.',
+            'The CAKE ticket price is set before each lottery round starts, equal to $5 at that time. Ticket purchases are final.',
           )}
         </Text>
       </Flex>
