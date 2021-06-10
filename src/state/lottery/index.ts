@@ -111,12 +111,13 @@ export const fetchTickets = async (account, lotteryId, cursor) => {
       .call()
     const ticketIds = userTickets[0]
     const ticketNumbers = userTickets[1]
-    const ticketStatuses = userTickets[3]
+    const ticketStatuses = userTickets[2]
+
     const completeTicketData = ticketIds.map((ticketId, index) => {
       return {
         id: ticketId,
-        number: ticketNumbers[0][index],
-        status: ticketStatuses[1][index],
+        number: ticketNumbers[index],
+        status: ticketStatuses[index],
       }
     })
     return completeTicketData
