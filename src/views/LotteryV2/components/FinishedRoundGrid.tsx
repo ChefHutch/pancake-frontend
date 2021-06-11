@@ -17,6 +17,7 @@ interface FinishedRoundGridProps {
 const FinishedRoundGrid: React.FC<FinishedRoundGridProps> = ({ handleHistoryRowClick }) => {
   const { t } = useTranslation()
   const userLotteryHistory = useGetUserLotteryHistory()
+  // TODO: Reverse rounds. Filter out current round
 
   return (
     <>

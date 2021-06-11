@@ -101,7 +101,7 @@ const fetchUnclaimedUserRewards = async (
     return !round.claimed
   })
 
-  // If there are any unclaimed rounds, check user tickets for those rounds
+  // If there are any rounds tickets haven't been claimed for, check user tickets for those rounds
   if (filteredForAlreadyClaimed.length > 0) {
     const calls = filteredForAlreadyClaimed.map(
       (round) =>
