@@ -5,8 +5,9 @@ import { LotteryStatus, LotteryTicket } from 'config/constants/types'
 import { UserLotteryHistory, PastLotteryRound } from 'state/types'
 import { getLotteryV2Contract } from 'utils/contractHelpers'
 import makeBatchRequest from 'utils/makeBatchRequest'
+import { BIG_ZERO } from 'utils/bigNumber'
 
-interface RoundTicketsAndWinningNumbers {
+interface RoundDataAndUserTickets {
   roundId: string
   userTickets: LotteryTicket[]
   winningNumbers: string
@@ -106,24 +107,32 @@ export const fetchTickets = async (account: string, lotteryId: string, cursor: n
   }
 }
 
-const validateWinningTickets = async (winningTickets) => {
+const getCakeRewardsForTickets = async (
+  winningTickets: LotteryTicket[],
+): Promise<{ ticketsWithRewards: LotteryTicket[]; cakeTotal: BigNumber }> => {
   const calls = winningTickets.map((winningTicket) => {
-    const { roundId, ticketId, bracket } = winningTicket
-    console.log(roundId, ticketId, bracket)
-    return lotteryContract.methods.viewRewardsForTicketId(roundId, ticketId, bracket).call
+    const { roundId, id, rewardBracket } = winningTicket
+    return lotteryContract.methods.viewRewardsForTicketId(roundId, id, rewardBracket).call
   })
-
-  const rewards = await makeBatchRequest(calls)
-  // debugger // eslint-disable-line
+  const cakeRewards = (await makeBatchRequest(calls)) as string[]
+  const cakeTotal = cakeRewards.reduce((a, b) => new BigNumber(a).plus(new BigNumber(b)), BIG_ZERO)
+  const ticketsWithRewards = winningTickets.map((winningTicket, index) => {
+    return { ...winningTicket, cakeReward: cakeRewards[index] }
+  })
+  // TODO: Remove log. To help in testing when verifying winning tickets.
+  console.log('winning tickets: ', ticketsWithRewards)
+  return { ticketsWithRewards, cakeTotal }
 }
 
 const getRewardBracket = (ticketNumber: string, winningNumbers: string): number => {
-  const ticketNumAsArray = ticketNumber.split('')
-  const winningNumsAsArray = winningNumbers.split('')
+  // Winning numbers are evaluated right-to-left in the smart contract, so we reverse their order for validation here:
+  // i.e. '1123456' should be evaluated as '6543211'
+  const ticketNumAsArray = ticketNumber.split('').reverse()
+  const winningNumsAsArray = winningNumbers.split('').reverse()
   const matchingNumbers = []
 
-  // The number at index 0 in all tickets is 1 and will always match, so start at index 1
-  for (let index = 1; index < winningNumsAsArray.length; index++) {
+  // The number at index 6 in all tickets is 1 and will always match, so finish at index 5
+  for (let index = 0; index < winningNumsAsArray.length - 1; index++) {
     if (ticketNumAsArray[index] === winningNumsAsArray[index]) {
       matchingNumbers.push(ticketNumAsArray[index])
     } else {
@@ -136,29 +145,32 @@ const getRewardBracket = (ticketNumber: string, winningNumbers: string): number 
   return rewardBracket
 }
 
-const getWinningTickets = (roundTicketsAndWinningNumbers: RoundTicketsAndWinningNumbers) => {
-  const { roundId, userTickets, winningNumbers } = roundTicketsAndWinningNumbers
+const getWinningTickets = async (
+  roundDataAndUserTickets: RoundDataAndUserTickets,
+): Promise<{ ticketsWithRewards: LotteryTicket[]; cakeTotal: BigNumber }> => {
+  const { roundId, userTickets, winningNumbers } = roundDataAndUserTickets
 
   const ticketsWithRewardBrackets = userTickets.map((ticket) => {
     return {
       roundId,
-      ticketId: ticket.id,
+      id: ticket.id,
       number: ticket.number,
-      bracket: getRewardBracket(ticket.number, winningNumbers),
+      rewardBracket: getRewardBracket(ticket.number, winningNumbers),
     }
   })
+  // TODO: Remove log. To help in testing when verifying winning tickets.
+  console.log(`all tickets round #${roundId}`, ticketsWithRewardBrackets)
 
+  // A rewardBracket of -1 means no matches. 0 and above means there has been a match
   const winningTickets = ticketsWithRewardBrackets.filter((ticket) => {
-    // ticket.bracket -1 = no matches. 0 and above means there has been a match
-    return ticket.bracket >= 0
+    return ticket.rewardBracket >= 0
   })
 
   if (winningTickets.length > 0) {
-    const validatedTickets = validateWinningTickets(winningTickets)
+    const { ticketsWithRewards, cakeTotal } = await getCakeRewardsForTickets(winningTickets)
+    return { ticketsWithRewards, cakeTotal }
   }
-
-  // return {lotteryId, ticketId, bracket (1-6)}
-  return ''
+  return null
 }
 
 const getWinningNumbersForRound = (targetRoundId: string, pastLotteries: PastLotteryRound[]) => {
@@ -171,7 +183,7 @@ export const deepCheckUserHasRewards = async (
   currentLotteryId: string,
   userLotteryHistory: UserLotteryHistory,
   pastLotteries: PastLotteryRound[],
-): Promise<any> => {
+): Promise<{ ticketsWithRewards: LotteryTicket[]; cakeTotal: BigNumber }[]> => {
   const { pastRounds } = userLotteryHistory
   const cursor = 0
   const limit = 1000
@@ -190,7 +202,7 @@ export const deepCheckUserHasRewards = async (
   )
   const roundIds = filteredForAlreadyClaimed.map((round) => round.lotteryId)
   const rawTicketData = await makeBatchRequest(calls)
-  const roundTicketsAndWinningNumbers = rawTicketData.map((roundTicketData, index): RoundTicketsAndWinningNumbers => {
+  const roundDataAndUserTickets = rawTicketData.map((roundTicketData, index) => {
     return {
       roundId: roundIds[index],
       userTickets: processRawTicketData(roundTicketData),
@@ -198,9 +210,11 @@ export const deepCheckUserHasRewards = async (
     }
   })
 
-  const test = getWinningTickets(roundTicketsAndWinningNumbers[0])
+  const winningTicketsForPastRounds = await Promise.all(
+    roundDataAndUserTickets.map((roundData) => getWinningTickets(roundData)),
+  )
 
-  return account
+  return winningTicketsForPastRounds
 }
 
 export const getPastLotteries = async (): Promise<PastLotteryRound[]> => {

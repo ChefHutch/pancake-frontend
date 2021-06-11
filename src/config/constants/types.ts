@@ -1,4 +1,4 @@
-import { TranslatableText } from 'state/types'
+import { SerializedBigNumber, TranslatableText } from 'state/types'
 
 export interface Address {
   97?: string
@@ -164,5 +164,8 @@ export enum LotteryStatus {
 export interface LotteryTicket {
   id: string
   number: string
-  status: boolean
+  status?: boolean
+  rewardBracket?: number
+  roundId?: string
+  cakeReward?: SerializedBigNumber
 }
