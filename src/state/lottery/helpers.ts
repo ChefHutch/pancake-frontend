@@ -17,7 +17,7 @@ const lotteryContract = getLotteryV2Contract()
 
 export const fetchLottery = async (lotteryId: string) => {
   try {
-    const lotteryData = await lotteryContract.methods.lotteries(lotteryId).call()
+    const lotteryData = await lotteryContract.methods.viewLottery(lotteryId).call()
     const {
       status,
       startTime,
