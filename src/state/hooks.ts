@@ -37,7 +37,7 @@ import {
   fetchPastLotteries,
   fetchUserLotteryHistory,
 } from './lottery'
-import { deepCheckUserHasRewards, getPastLotteries, getUserPastLotteries } from './lottery/helpers'
+import { getPastLotteries, getUserPastLotteries } from './lottery/helpers'
 
 export const usePollFarmsData = (includeArchive = false) => {
   const dispatch = useAppDispatch()
@@ -494,8 +494,6 @@ export const useFetchLottery = () => {
   const { fastRefresh } = useRefresh()
   const dispatch = useAppDispatch()
   const currentLotteryId = useGetCurrentLotteryId()
-  const userLotteryHistory = useGetUserLotteryHistory()
-  const pastLotteries = useGetPastLotteries()
 
   useEffect(() => {
     // get current lottery ID, max tickets and historical lottery subgraph data
@@ -523,13 +521,6 @@ export const useFetchLottery = () => {
       dispatch(fetchUserLotteryHistory({ account }))
     }
   }, [dispatch, account])
-
-  useEffect(() => {
-    if (userLotteryHistory && account && currentLotteryId && pastLotteries) {
-      // If the user has entered previous lotteries - check for any claimable rewards
-      deepCheckUserHasRewards(account, currentLotteryId, userLotteryHistory, pastLotteries)
-    }
-  }, [account, userLotteryHistory, currentLotteryId, pastLotteries])
 }
 
 export const useLottery = () => {
