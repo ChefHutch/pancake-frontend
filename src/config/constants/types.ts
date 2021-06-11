@@ -1,3 +1,4 @@
+import BigNumber from 'bignumber.js'
 import { SerializedBigNumber, TranslatableText } from 'state/types'
 
 export interface Address {
@@ -168,4 +169,10 @@ export interface LotteryTicket {
   rewardBracket?: number
   roundId?: string
   cakeReward?: SerializedBigNumber
+}
+
+export interface LotteryTicketClaimData {
+  ticketsWithRewards: LotteryTicket[]
+  cakeTotal: BigNumber
+  roundId: string
 }
