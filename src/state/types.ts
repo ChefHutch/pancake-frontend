@@ -274,6 +274,9 @@ export interface LotteryRound {
   lastTicketId: string
   amountCollectedInCake: SerializedBigNumber | BigNumber
   finalNumber: string
+  cakePerBracket: string[]
+  countWinnersPerBracket: string[]
+  rewardsBreakdown: string[]
   userData?: LotteryRoundUserData
 }
 
