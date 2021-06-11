@@ -10,7 +10,7 @@ import { BIG_ZERO } from 'utils/bigNumber'
 interface RoundDataAndUserTickets {
   roundId: string
   userTickets: LotteryTicket[]
-  winningNumbers: string
+  finalNumber: string
 }
 
 const lotteryContract = getLotteryV2Contract()
@@ -133,11 +133,11 @@ const getCakeRewardsForTickets = async (
   return { ticketsWithRewards, cakeTotal }
 }
 
-const getRewardBracket = (ticketNumber: string, winningNumbers: string): number => {
+const getRewardBracket = (ticketNumber: string, finalNumber: string): number => {
   // Winning numbers are evaluated right-to-left in the smart contract, so we reverse their order for validation here:
   // i.e. '1123456' should be evaluated as '6543211'
   const ticketNumAsArray = ticketNumber.split('').reverse()
-  const winningNumsAsArray = winningNumbers.split('').reverse()
+  const winningNumsAsArray = finalNumber.split('').reverse()
   const matchingNumbers = []
 
   // The number at index 6 in all tickets is 1 and will always match, so finish at index 5
@@ -157,14 +157,14 @@ const getRewardBracket = (ticketNumber: string, winningNumbers: string): number 
 const getWinningTickets = async (
   roundDataAndUserTickets: RoundDataAndUserTickets,
 ): Promise<{ ticketsWithRewards: LotteryTicket[]; cakeTotal: BigNumber }> => {
-  const { roundId, userTickets, winningNumbers } = roundDataAndUserTickets
+  const { roundId, userTickets, finalNumber } = roundDataAndUserTickets
 
   const ticketsWithRewardBrackets = userTickets.map((ticket) => {
     return {
       roundId,
       id: ticket.id,
       number: ticket.number,
-      rewardBracket: getRewardBracket(ticket.number, winningNumbers),
+      rewardBracket: getRewardBracket(ticket.number, finalNumber),
     }
   })
   // TODO: Remove log. To help in testing when verifying winning tickets.
@@ -184,7 +184,7 @@ const getWinningTickets = async (
 
 const getWinningNumbersForRound = (targetRoundId: string, pastLotteries: PastLotteryRound[]) => {
   const targetRound = pastLotteries.find((pastLottery) => pastLottery.id === targetRoundId)
-  return targetRound?.winningNumbers
+  return targetRound?.finalNumber
 }
 
 export const deepCheckUserHasRewards = async (
@@ -215,7 +215,7 @@ export const deepCheckUserHasRewards = async (
     return {
       roundId: roundIds[index],
       userTickets: processRawTicketData(roundTicketData),
-      winningNumbers: getWinningNumbersForRound(roundIds[index], pastLotteries),
+      finalNumber: getWinningNumbersForRound(roundIds[index], pastLotteries),
     }
   })
 
@@ -236,7 +236,7 @@ export const getPastLotteries = async (): Promise<PastLotteryRound[]> => {
           totalUsers
           totalTickets
           status
-          winningNumbers
+          finalNumber
           winningTickets
           startTime
           endTime

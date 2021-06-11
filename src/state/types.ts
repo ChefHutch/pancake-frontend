@@ -293,7 +293,7 @@ export interface PastLotteryRound {
   totalUsers: string
   totalTickets: string
   status: LotteryStatus
-  winningNumbers: string
+  finalNumber: string
   winningTickets: string
   startTime: string
   endTime: string
