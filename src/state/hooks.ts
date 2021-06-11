@@ -536,6 +536,8 @@ export const useLottery = () => {
   const currentRound = useSelector((state: State) => state.lottery.currentRound)
   const currentLotteryId = useGetCurrentLotteryId()
   const maxNumberTicketsPerBuyAsString = useSelector((state: State) => state.lottery.maxNumberTicketsPerBuy)
+  const userLotteryHistory = useGetUserLotteryHistory()
+  const pastLotteries = useGetPastLotteries()
 
   const {
     isLoading,
@@ -571,6 +573,8 @@ export const useLottery = () => {
   return {
     currentLotteryId,
     maxNumberTicketsPerBuy,
+    userLotteryHistory,
+    pastLotteries,
     currentRound: {
       isLoading,
       status,
