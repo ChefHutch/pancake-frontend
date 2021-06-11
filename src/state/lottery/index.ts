@@ -24,6 +24,9 @@ const initialState: LotteryState = {
     lastTicketId: '',
     amountCollectedInCake: '',
     finalNumber: '',
+    cakePerBracket: [],
+    countWinnersPerBracket: [],
+    rewardsBreakdown: [],
     userData: {
       isLoading: true,
       tickets: [],

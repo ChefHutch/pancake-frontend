@@ -552,6 +552,9 @@ export const useLottery = () => {
     amountCollectedInCake: amountCollectedInCakeAsString,
     finalNumber,
     userData,
+    cakePerBracket,
+    countWinnersPerBracket,
+    rewardsBreakdown,
   } = currentRound
 
   const maxNumberTicketsPerBuy = useMemo(() => {
@@ -588,6 +591,9 @@ export const useLottery = () => {
       amountCollectedInCake,
       finalNumber,
       userData,
+      cakePerBracket,
+      countWinnersPerBracket,
+      rewardsBreakdown,
     },
   }
 }

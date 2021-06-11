@@ -2,7 +2,7 @@ import BigNumber from 'bignumber.js'
 import { request, gql } from 'graphql-request'
 import { GRAPH_API_LOTTERY } from 'config/constants/endpoints'
 import { LotteryStatus, LotteryTicket } from 'config/constants/types'
-import { UserLotteryHistory, PastLotteryRound } from 'state/types'
+import { UserLotteryHistory, PastLotteryRound, LotteryRound } from 'state/types'
 import { getLotteryV2Contract } from 'utils/contractHelpers'
 import makeBatchRequest from 'utils/makeBatchRequest'
 import { BIG_ZERO } from 'utils/bigNumber'
@@ -15,7 +15,7 @@ interface RoundDataAndUserTickets {
 
 const lotteryContract = getLotteryV2Contract()
 
-export const fetchLottery = async (lotteryId: string) => {
+export const fetchLottery = async (lotteryId: string): Promise<LotteryRound> => {
   try {
     const lotteryData = await lotteryContract.methods.viewLottery(lotteryId).call()
     const {
@@ -29,6 +29,9 @@ export const fetchLottery = async (lotteryId: string) => {
       lastTicketId,
       amountCollectedInCake,
       finalNumber,
+      cakePerBracket,
+      countWinnersPerBracket,
+      rewardsBreakdown,
     } = lotteryData
     const priceTicketInCakeAsBN = new BigNumber(priceTicketInCake as string)
     const amountCollectedInCakeAsBN = new BigNumber(amountCollectedInCake as string)
@@ -45,6 +48,9 @@ export const fetchLottery = async (lotteryId: string) => {
       lastTicketId,
       amountCollectedInCake: amountCollectedInCakeAsBN.toJSON(),
       finalNumber,
+      cakePerBracket,
+      countWinnersPerBracket,
+      rewardsBreakdown,
     }
   } catch (error) {
     return {
@@ -59,6 +65,9 @@ export const fetchLottery = async (lotteryId: string) => {
       lastTicketId: '',
       amountCollectedInCake: '',
       finalNumber: '',
+      cakePerBracket: [],
+      countWinnersPerBracket: [],
+      rewardsBreakdown: [],
     }
   }
 }
