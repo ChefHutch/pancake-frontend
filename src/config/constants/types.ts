@@ -154,6 +154,13 @@ export type PageMeta = {
   image?: string
 }
 
+export enum LotteryStatus {
+  PENDING = 'pending',
+  OPEN = 'open',
+  CLOSE = 'close',
+  CLAIMABLE = 'claimable',
+}
+
 export interface LotteryTicket {
   id: string
   number: string

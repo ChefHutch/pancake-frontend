@@ -37,7 +37,7 @@ import {
   fetchPastLotteries,
   fetchUserLotteryHistory,
 } from './lottery'
-import { getPastLotteries, getUserPastLotteries } from './lottery/helpers'
+import { deepCheckUserHasRewards, getPastLotteries, getUserPastLotteries } from './lottery/helpers'
 
 export const usePollFarmsData = (includeArchive = false) => {
   const dispatch = useAppDispatch()
@@ -477,38 +477,59 @@ export const useGetCollectibles = () => {
 }
 
 // Lottery
+export const useGetCurrentLotteryId = () => {
+  return useSelector((state: State) => state.lottery.currentLotteryId)
+}
+
+export const useGetUserLotteryHistory = () => {
+  return useSelector((state: State) => state.lottery.userLotteryHistory)
+}
+
+export const useGetPastLotteries = () => {
+  return useSelector((state: State) => state.lottery.pastLotteries)
+}
+
 export const useFetchLottery = () => {
   const { account } = useWeb3React()
   const { fastRefresh } = useRefresh()
   const dispatch = useAppDispatch()
   const currentLotteryId = useGetCurrentLotteryId()
+  const userLotteryHistory = useGetUserLotteryHistory()
+  const pastLotteries = useGetPastLotteries()
 
-  // get current lottery ID, max tickets and historical lottery data
   useEffect(() => {
+    // get current lottery ID, max tickets and historical lottery subgraph data
     dispatch(fetchPublicLotteryData())
     dispatch(fetchPastLotteries())
   }, [dispatch])
 
-  // get user data for current and past lotteries
   useEffect(() => {
-    if (account && currentLotteryId) {
-      dispatch(fetchUserTickets({ account, lotteryId: currentLotteryId }))
-    }
-    if (account) {
-      dispatch(fetchUserLotteryHistory({ account }))
-    }
-  }, [dispatch, currentLotteryId, account])
-
-  // get data for current lottery
-  useEffect(() => {
+    // get public data for current lottery
     if (currentLotteryId) {
       dispatch(fetchCurrentLottery({ currentLotteryId }))
     }
-  }, [dispatch, currentLotteryId, fastRefresh, account])
-}
+  }, [dispatch, currentLotteryId, fastRefresh])
 
-export const useGetCurrentLotteryId = () => {
-  return useSelector((state: State) => state.lottery.currentLotteryId)
+  useEffect(() => {
+    // get user tickets for current lottery
+    if (account && currentLotteryId) {
+      dispatch(fetchUserTickets({ account, lotteryId: currentLotteryId }))
+    }
+  }, [dispatch, currentLotteryId, account])
+
+  useEffect(() => {
+    // get user past lotteries subgraph data
+    if (account) {
+      dispatch(fetchUserLotteryHistory({ account }))
+    }
+  }, [dispatch, account])
+
+  useEffect(() => {
+    if (userLotteryHistory && account && currentLotteryId && pastLotteries) {
+      // If the user has entered previous lotteries - check for any claimable rewards
+      deepCheckUserHasRewards(account, currentLotteryId, userLotteryHistory, pastLotteries)
+    }
+  }, [account, userLotteryHistory, currentLotteryId, pastLotteries])
 }
 
 export const useLottery = () => {
@@ -516,7 +537,6 @@ export const useLottery = () => {
   const currentLotteryId = useGetCurrentLotteryId()
   const maxNumberTicketsPerBuyAsString = useSelector((state: State) => state.lottery.maxNumberTicketsPerBuy)
 
-  // TODO: Move some of this to helper function?
   const {
     isLoading,
     status,
