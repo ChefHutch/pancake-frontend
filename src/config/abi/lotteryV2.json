@@ -159,6 +159,19 @@
       {
         "indexed": true,
         "internalType": "address",
+        "name": "randomGenerator",
+        "type": "address"
+      }
+    ],
+    "name": "NewRandomGenerator",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
         "name": "previousOwner",
         "type": "address"
       },
@@ -343,6 +356,19 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_randomGeneratorAddress",
+        "type": "address"
+      }
+    ],
+    "name": "changeRandomGenerator",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "_lotteryId",
         "type": "uint256"
@@ -435,7 +461,7 @@
   },
   {
     "inputs": [],
-    "name": "maxNumberTicketsPerBuy",
+    "name": "maxNumberTicketsPerBuyOrClaim",
     "outputs": [
       {
         "internalType": "uint256",
@@ -595,6 +621,19 @@
         "internalType": "address",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "viewCurrentLotteryId",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
