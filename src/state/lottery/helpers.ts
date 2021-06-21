@@ -67,18 +67,18 @@ export const fetchLottery = async (lotteryId: string): Promise<LotteryRound> => 
 
 export const fetchPublicData = async () => {
   try {
-    const [currentLotteryId, maxNumberTicketsPerBuy] = (await makeBatchRequest([
+    const [currentLotteryId, maxNumberTicketsPerBuyOrClaim] = (await makeBatchRequest([
       lotteryContract.methods.currentLotteryId().call,
-      lotteryContract.methods.maxNumberTicketsPerBuy().call,
+      lotteryContract.methods.maxNumberTicketsPerBuyOrClaim().call,
     ])) as [string, string]
     return {
       currentLotteryId,
-      maxNumberTicketsPerBuy,
+      maxNumberTicketsPerBuyOrClaim,
     }
   } catch (error) {
     return {
       currentLotteryId: null,
-      maxNumberTicketsPerBuy: null,
+      maxNumberTicketsPerBuyOrClaim: null,
     }
   }
 }
@@ -144,8 +144,8 @@ export const getUserPastLotteries = async (account: string): Promise<UserLottery
           id
           totalTickets
           totalCake
-          participation {
-            lottery {
+          rounds {
+            lotteryId {
               id
             }
             claimed

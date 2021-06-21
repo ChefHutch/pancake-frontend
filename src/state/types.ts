@@ -282,7 +282,7 @@ export interface LotteryRound {
 
 export interface LotteryState {
   currentLotteryId: string
-  maxNumberTicketsPerBuy: string
+  maxNumberTicketsPerBuyOrClaim: string
   currentRound: LotteryRound
   pastLotteries?: PastLotteryRound[]
   userLotteryHistory?: UserLotteryHistory
