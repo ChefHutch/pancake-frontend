@@ -315,6 +315,8 @@ export interface UserRound {
   totalTickets: string
 }
 
+export type UserTicketsResponse = [BigNumber[], number[], boolean[], BigNumber]
+
 // Global state
 
 export interface State {

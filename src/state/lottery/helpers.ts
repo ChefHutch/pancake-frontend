@@ -5,7 +5,7 @@ import { LotteryStatus, LotteryTicket } from 'config/constants/types'
 import lotteryV2Abi from 'config/abi/lotteryV2.json'
 import { getLotteryV2Address } from 'utils/addressHelpers'
 import { multicallv2 } from 'utils/multicall'
-import { UserLotteryHistory, PastLotteryRound, LotteryRound } from 'state/types'
+import { UserLotteryHistory, PastLotteryRound, LotteryRound, UserTicketsResponse } from 'state/types'
 import { getLotteryV2Contract } from 'utils/contractHelpers'
 
 const lotteryContract = getLotteryV2Contract()
@@ -90,15 +90,15 @@ export const fetchPublicData = async () => {
   }
 }
 
-export const processRawTicketData = (rawTicketResponse): LotteryTicket[] => {
-  const ticketIds = rawTicketResponse[0]
-  const ticketNumbers = rawTicketResponse[1]
-  const ticketStatuses = rawTicketResponse[2]
+export const processRawTicketsResponse = (ticketsResponse: UserTicketsResponse): LotteryTicket[] => {
+  const ticketIds = ticketsResponse[0]
+  const ticketNumbers = ticketsResponse[1]
+  const ticketStatuses = ticketsResponse[2]
 
   return ticketIds.map((ticketId, index) => {
     return {
-      id: ticketId,
-      number: ticketNumbers[index],
+      id: ticketId.toString(),
+      number: ticketNumbers[index].toString(),
       status: ticketStatuses[index],
     }
   })
@@ -109,7 +109,7 @@ export const fetchTickets = async (account: string, lotteryId: string, cursor: n
     const userTickets = await lotteryContract.methods
       .viewUserTicketNumbersAndStatusesForLottery(account, lotteryId, cursor, 1000)
       .call()
-    const completeTicketData = processRawTicketData(userTickets)
+    const completeTicketData = processRawTicketsResponse(userTickets)
     return completeTicketData
   } catch (error) {
     return null

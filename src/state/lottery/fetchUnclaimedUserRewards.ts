@@ -1,11 +1,11 @@
 import BigNumber from 'bignumber.js'
 import { LotteryTicket, LotteryTicketClaimData } from 'config/constants/types'
-import { UserLotteryHistory, PastLotteryRound } from 'state/types'
+import { UserLotteryHistory, PastLotteryRound, UserTicketsResponse } from 'state/types'
 import { multicallv2 } from 'utils/multicall'
 import lotteryV2Abi from 'config/abi/lotteryV2.json'
 import { getLotteryV2Address } from 'utils/addressHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { processRawTicketData } from './helpers'
+import { processRawTicketsResponse } from './helpers'
 
 interface RoundDataAndUserTickets {
   roundId: string
@@ -26,8 +26,12 @@ const getCakeRewardsForTickets = async (
       params: [roundId, id, rewardBracket],
     }
   })
-  const cakeRewards = (await multicallv2(lotteryV2Abi, calls)) as string[]
-  const cakeTotal = cakeRewards.reduce((a, b) => new BigNumber(a).plus(new BigNumber(b)), BIG_ZERO)
+  const cakeRewards = await multicallv2(lotteryV2Abi, calls)
+
+  // TODO TOMORROW: MODIFY THIS TO USE ETHERS BIGNUMBER
+  const cakeTotal = cakeRewards.reduce((a, b) => {
+    return new BigNumber(a).plus(new BigNumber(b))
+  }, BIG_ZERO)
   const ticketsWithRewards = winningTickets.map((winningTicket, index) => {
     return { ...winningTicket, cakeReward: cakeRewards[index] }
   })
@@ -93,8 +97,7 @@ const fetchUnclaimedUserRewards = async (
   currentLotteryId: string,
   userLotteryHistory: UserLotteryHistory,
   pastLotteries: PastLotteryRound[],
-): Promise<any> => {
-  // TODO: Reinstate typing when multicall working
+): Promise<LotteryTicketClaimData[]> => {
   const { rounds } = userLotteryHistory
   const cursor = 0
   const limit = 1000
@@ -120,11 +123,12 @@ const fetchUnclaimedUserRewards = async (
       params: [account, round.lotteryId, cursor, limit],
     }))
     const roundIds = filteredForAlreadyClaimed.map((round) => round.lotteryId)
-    const rawTicketData = await multicallv2(lotteryV2Abi, calls)
+    const rawTicketData = (await multicallv2(lotteryV2Abi, calls)) as UserTicketsResponse[]
+
     const roundDataAndUserTickets = rawTicketData.map((roundTicketData, index) => {
       return {
         roundId: roundIds[index],
-        userTickets: processRawTicketData(roundTicketData),
+        userTickets: processRawTicketsResponse(roundTicketData),
         finalNumber: getWinningNumbersForRound(roundIds[index], pastLotteries),
       }
     })
