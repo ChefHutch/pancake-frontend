@@ -43,7 +43,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
       userData: { tickets: userCurrentTickets },
     },
   } = useLottery()
-  const [ticketsToBuy, setTicketsToBuy] = useState('')
+  const [ticketsToBuy, setTicketsToBuy] = useState('0')
   const [discountValue, setDiscountValue] = useState('')
   const [totalCost, setTotalCost] = useState('')
   const [maxPossibleTicketPurchase, setMaxPossibleTicketPurchase] = useState(BIG_ZERO)
