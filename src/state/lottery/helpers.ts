@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js'
 import { request, gql } from 'graphql-request'
+import { ethers } from 'ethers'
 import { GRAPH_API_LOTTERY } from 'config/constants/endpoints'
 import { LotteryStatus, LotteryTicket } from 'config/constants/types'
 import lotteryV2Abi from 'config/abi/lotteryV2.json'
@@ -76,7 +77,7 @@ export const fetchPublicData = async () => {
     const [[currentLotteryId], [maxNumberTicketsPerBuyOrClaim]] = (await multicallv2(
       lotteryV2Abi,
       calls,
-    )) as BigNumber[][]
+    )) as ethers.BigNumber[][]
 
     return {
       currentLotteryId: currentLotteryId ? currentLotteryId.toString() : null,
