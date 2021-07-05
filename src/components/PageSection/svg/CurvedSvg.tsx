@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps, Box } from '@pancakeswap/uikit'
 
 interface StyledSvgProps {
   svgFill?: string
@@ -11,6 +11,19 @@ svg {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   }
 `
+// Only used on lottery page
+const LotteryConcaveTopSvg: React.FC<SvgProps> = (props) => {
+  return (
+    <Svg viewBox="0 0 1440 17" {...props}>
+      <svg width="1440" height="17" viewBox="0 0 1440 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0 16.8146V0.814575C179.359 10.0203 435.559 15.7808 720 15.7808C1004.44 15.7808 1260.64 10.0203 1440 0.814575V16.8146H0Z"
+          fill="#7645D9"
+        />
+      </svg>
+    </Svg>
+  )
+}
 
 const CurvedSvg: React.FC<SvgProps> = (props) => {
   return (
@@ -55,3 +68,20 @@ export const CurvedSvgBottom = styled(CurvedSvg)<StyledSvgProps>`
   margin-top: -2px;
   fill: ${({ svgFill, theme }) => svgFill || theme.colors.background};
 `
+
+// scale(1.05) is needed to prevent tiny half a pixel blank space on the edges
+const LotteryConcaveTop = styled(LotteryConcaveTopSvg)<StyledSvgProps>`
+  transform: scale(1.05);
+`
+
+const ConcaveContainer = styled(Box)`
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+`
+
+export const ConcaveTop = () => (
+  <ConcaveContainer mb="-4px">
+    <LotteryConcaveTop width="100%" />
+  </ConcaveContainer>
+)

@@ -22,16 +22,10 @@ import HistoryTabMenu from './components/HistoryTabMenu'
 import YourHistoryCard from './components/YourHistoryCard'
 import AllHistoryCard from './components/AllHistoryCard'
 import CheckPrizesSection from './components/CheckPrizesSection'
+import HowToPlay from './components/HowToPlay'
 
 const LotteryPage = styled.div`
   min-height: calc(100vh - 64px);
-`
-
-const TicketsSection = styled(PageSection)`
-  margin-top: -32px;
-  ${({ theme }) => theme.mediaQueries.lg} {
-    margin-top: -64px;
-  }
 `
 
 const LotteryV2 = () => {
@@ -48,16 +42,17 @@ const LotteryV2 = () => {
 
   return (
     <LotteryPage>
-      <PageSection background={TITLE_BG} svgFill={theme.colors.overlay} index={4}>
+      <PageSection background={TITLE_BG} svgFill={theme.colors.overlay} index={1} hasCurvedDivider={false}>
         <Hero />
       </PageSection>
-      <TicketsSection
-        containerProps={{ style: { margin: '0' } }}
+      <PageSection
+        containerProps={{ style: { marginTop: '-30px' } }}
         background={GET_TICKETS_BG}
-        hasCurvedDivider={false}
-        index={3}
+        concaveDivider
+        curvePosition="top"
+        index={2}
       >
-        <Flex alignItems="center" justifyContent="center" flexDirection="column">
+        <Flex alignItems="center" justifyContent="center" flexDirection="column" pt="24px">
           {status === LotteryStatus.OPEN && (
             <Heading scale="xl" color="#ffffff" mb="24px" textAlign="center">
               {t('Get your tickets now!')}
@@ -76,15 +71,14 @@ const LotteryV2 = () => {
           </Flex>
           <NextDrawCard />
         </Flex>
-      </TicketsSection>
+      </PageSection>
       <PageSection background={CHECK_PRIZES_BG} hasCurvedDivider={false} index={2}>
         <CheckPrizesSection />
       </PageSection>
       <PageSection
         background={isDark ? FINISHED_ROUNDS_BG_DARK : FINISHED_ROUNDS_BG}
         hasCurvedDivider={false}
-        index={1}
-        containerProps={{ style: { margin: '0' } }}
+        index={2}
       >
         <Flex width="100%" flexDirection="column" alignItems="center" justifyContent="center">
           <Heading mb="24px" scale="xl">
@@ -100,10 +94,8 @@ const LotteryV2 = () => {
         </Flex>
       </PageSection>
 
-      <PageSection hasCurvedDivider={false} index={0}>
-        <Flex>
-          <img src="/images/lottery/tombola.png" alt="tombola bunny" height="auto" width="240px" />
-        </Flex>
+      <PageSection hasCurvedDivider={false} index={2} containerProps={{ style: { marginTop: '-32px' } }}>
+        <HowToPlay />
       </PageSection>
     </LotteryPage>
   )
