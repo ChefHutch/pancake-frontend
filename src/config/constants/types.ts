@@ -15,6 +15,10 @@ export interface Token {
   busdPrice?: string
 }
 
+export interface TokenWithPrice extends SDKToken {
+  busdPrice?: string
+}
+
 export enum PoolIds {
   poolBasic = 'poolBasic',
   poolUnlimited = 'poolUnlimited',
@@ -56,8 +60,8 @@ export interface FarmConfig {
   pid: number
   lpSymbol: string
   lpAddresses: Address
-  token: Token
-  quoteToken: Token
+  token: TokenWithPrice
+  quoteToken: TokenWithPrice
   multiplier?: string
   isCommunity?: boolean
   dual?: {
