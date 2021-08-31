@@ -116,8 +116,14 @@ export interface Profile {
 
 // Slices states
 
-export interface FarmsState {
+export interface SerializedFarmsState {
   data: SerializedFarm[]
+  loadArchivedFarmsData: boolean
+  userDataLoaded: boolean
+}
+
+export interface DeserializedFarmsState {
+  data: DeserializedFarm[]
   loadArchivedFarmsData: boolean
   userDataLoaded: boolean
 }
@@ -570,7 +576,7 @@ export type UserTicketsResponse = [ethers.BigNumber[], number[], boolean[]]
 export interface State {
   achievements: AchievementState
   block: BlockState
-  farms: FarmsState
+  farms: SerializedFarmsState
   pools: PoolsState
   predictions: PredictionsState
   profile: ProfileState
