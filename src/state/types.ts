@@ -11,6 +11,7 @@ import {
   DeserializedPoolConfig,
   Team,
   SerializedPoolConfig,
+  DeserializedFarmConfig,
 } from 'config/constants/types'
 
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, State, unknown, AnyAction>
@@ -31,6 +32,13 @@ export type TranslatableText =
 
 export type SerializedBigNumber = string
 
+interface FarmUserDataProps {
+  allowance: string
+  tokenBalance: string
+  stakedBalance: string
+  earnings: string
+}
+
 export interface SerializedFarm extends SerializedFarmConfig {
   tokenAmountMc?: SerializedBigNumber
   quoteTokenAmountMc?: SerializedBigNumber
@@ -40,23 +48,34 @@ export interface SerializedFarm extends SerializedFarmConfig {
   lpTotalSupply?: SerializedBigNumber
   tokenPriceVsQuote?: SerializedBigNumber
   poolWeight?: SerializedBigNumber
-  userData?: {
-    allowance: string
-    tokenBalance: string
-    stakedBalance: string
-    earnings: string
-  }
+  userData?: FarmUserDataProps
 }
 
-export interface Pool extends DeserializedPoolConfig {
-  totalStaked?: BigNumber
-  stakingLimit?: BigNumber
+// TODO: Deserialize all this shit
+export interface DeserializedFarm extends DeserializedFarmConfig {
+  tokenAmountMc?: SerializedBigNumber
+  quoteTokenAmountMc?: SerializedBigNumber
+  tokenAmountTotal?: SerializedBigNumber
+  quoteTokenAmountTotal?: SerializedBigNumber
+  lpTotalInQuoteToken?: SerializedBigNumber
+  lpTotalSupply?: SerializedBigNumber
+  tokenPriceVsQuote?: SerializedBigNumber
+  poolWeight?: SerializedBigNumber
+  userData?: FarmUserDataProps
+}
+
+interface CorePoolProps {
   startBlock?: number
   endBlock?: number
   apr?: number
   stakingTokenPrice?: number
   earningTokenPrice?: number
   isAutoVault?: boolean
+}
+
+export interface DeserializedPool extends DeserializedPoolConfig, CorePoolProps {
+  totalStaked?: BigNumber
+  stakingLimit?: BigNumber
   userData?: {
     allowance: BigNumber
     stakingTokenBalance: BigNumber
@@ -65,15 +84,9 @@ export interface Pool extends DeserializedPoolConfig {
   }
 }
 
-export interface SerializedPool extends SerializedPoolConfig {
+export interface SerializedPool extends SerializedPoolConfig, CorePoolProps {
   totalStaked?: SerializedBigNumber
   stakingLimit?: SerializedBigNumber
-  startBlock?: number
-  endBlock?: number
-  apr?: number
-  stakingTokenPrice?: number
-  earningTokenPrice?: number
-  isAutoVault?: boolean
   userData?: {
     allowance: SerializedBigNumber
     stakingTokenBalance: SerializedBigNumber
