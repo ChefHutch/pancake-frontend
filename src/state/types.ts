@@ -2,7 +2,16 @@ import { ThunkAction } from 'redux-thunk'
 import { AnyAction } from '@reduxjs/toolkit'
 import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
-import { CampaignType, FarmConfig, LotteryStatus, LotteryTicket, Nft, PoolConfig, Team } from 'config/constants/types'
+import {
+  CampaignType,
+  FarmConfig,
+  LotteryStatus,
+  LotteryTicket,
+  Nft,
+  DeserializedPoolConfig,
+  Team,
+  SerializedPoolConfig,
+} from 'config/constants/types'
 
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, State, unknown, AnyAction>
 
@@ -39,7 +48,7 @@ export interface Farm extends FarmConfig {
   }
 }
 
-export interface Pool extends PoolConfig {
+export interface Pool extends DeserializedPoolConfig {
   totalStaked?: BigNumber
   stakingLimit?: BigNumber
   startBlock?: number
@@ -53,6 +62,23 @@ export interface Pool extends PoolConfig {
     stakingTokenBalance: BigNumber
     stakedBalance: BigNumber
     pendingReward: BigNumber
+  }
+}
+
+export interface SerializedPool extends SerializedPoolConfig {
+  totalStaked?: string
+  stakingLimit?: string
+  startBlock?: number
+  endBlock?: number
+  apr?: number
+  stakingTokenPrice?: number
+  earningTokenPrice?: number
+  isAutoVault?: boolean
+  userData?: {
+    allowance: string
+    stakingTokenBalance: string
+    stakedBalance: string
+    pendingReward: string
   }
 }
 
@@ -102,7 +128,7 @@ export interface CakeVault {
 }
 
 export interface PoolsState {
-  data: Pool[]
+  data: SerializedPool[]
   cakeVault: CakeVault
   userDataLoaded: boolean
 }
