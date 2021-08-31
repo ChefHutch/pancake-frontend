@@ -4,7 +4,7 @@ import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
 import {
   CampaignType,
-  FarmConfig,
+  SerializedFarmConfig,
   LotteryStatus,
   LotteryTicket,
   Nft,
@@ -31,7 +31,7 @@ export type TranslatableText =
 
 export type SerializedBigNumber = string
 
-export interface Farm extends FarmConfig {
+export interface SerializedFarm extends SerializedFarmConfig {
   tokenAmountMc?: SerializedBigNumber
   quoteTokenAmountMc?: SerializedBigNumber
   tokenAmountTotal?: SerializedBigNumber
@@ -66,8 +66,8 @@ export interface Pool extends DeserializedPoolConfig {
 }
 
 export interface SerializedPool extends SerializedPoolConfig {
-  totalStaked?: string
-  stakingLimit?: string
+  totalStaked?: SerializedBigNumber
+  stakingLimit?: SerializedBigNumber
   startBlock?: number
   endBlock?: number
   apr?: number
@@ -75,10 +75,10 @@ export interface SerializedPool extends SerializedPoolConfig {
   earningTokenPrice?: number
   isAutoVault?: boolean
   userData?: {
-    allowance: string
-    stakingTokenBalance: string
-    stakedBalance: string
-    pendingReward: string
+    allowance: SerializedBigNumber
+    stakingTokenBalance: SerializedBigNumber
+    stakedBalance: SerializedBigNumber
+    pendingReward: SerializedBigNumber
   }
 }
 
@@ -98,7 +98,7 @@ export interface Profile {
 // Slices states
 
 export interface FarmsState {
-  data: Farm[]
+  data: SerializedFarm[]
   loadArchivedFarmsData: boolean
   userDataLoaded: boolean
 }
