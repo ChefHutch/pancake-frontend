@@ -13,10 +13,7 @@ export interface Token {
   decimals?: number
   projectLink?: string
   busdPrice?: string
-}
-
-export interface TokenWithPrice extends SDKToken {
-  busdPrice?: string
+  // TODO: Kill
 }
 
 export interface SerializedToken {
@@ -28,9 +25,15 @@ export interface SerializedToken {
   // TODO: Add projectLink
 }
 
-export interface SerializedTokenWithPrice extends SerializedToken {
+// TODO: This should be deserialized
+export interface TokenWithPrice extends SerializedToken {
   busdPrice?: string
 }
+
+// TODO: When deserializing, make use of this
+// export interface SerializedTokenWithPrice extends SerializedToken {
+//   busdPrice?: string
+// }
 
 export enum PoolIds {
   poolBasic = 'poolBasic',
@@ -88,10 +91,10 @@ export interface FarmConfig extends FarmConfigGenerics {
 }
 
 // TODO: This needs to be more elegant.
-export interface SerializedFarmConfig extends FarmConfigGenerics {
-  token: SerializedTokenWithPrice
-  quoteToken: SerializedTokenWithPrice
-}
+// export interface SerializedFarmConfig extends FarmConfigGenerics {
+//   token: SerializedTokenWithPrice
+//   quoteToken: SerializedTokenWithPrice
+// }
 
 export interface PoolConfig {
   sousId: number
