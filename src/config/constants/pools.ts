@@ -2679,7 +2679,6 @@ const pools: SerializedPoolConfig[] = [
   },
   {
     sousId: 20,
-    // TODO: Figure out implications of using wbnb or a bnb symbol token with wbnb contract address here
     stakingToken: serializedTokens.bnb,
     earningToken: serializedTokens.cake,
     contractAddress: {
@@ -2694,7 +2693,6 @@ const pools: SerializedPoolConfig[] = [
   },
   {
     sousId: 19,
-    // TODO: Figure out implications of using wbnb or a bnb symbol token with wbnb contract address here
     stakingToken: serializedTokens.cake,
     earningToken: serializedTokens.bnb,
     contractAddress: {
