@@ -1,4 +1,5 @@
-import { serializeTokens } from './tokens'
+import { Pair } from '@pancakeswap/sdk'
+import { serializeTokens, mainnetTokens } from './tokens'
 import { SerializedFarmConfig } from './types'
 
 const serializedTokens = serializeTokens()
@@ -22,7 +23,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'CAKE-BNB LP',
     lpAddresses: {
       97: '0x3ed8936cAFDF85cfDBa29Fbe5940A5b0524824F4',
-      56: '0x0eD7e52944161450477ee417DE9Cd3a859b14fD0',
+      56: Pair.getAddress(mainnetTokens.cake, mainnetTokens.wbnb),
     },
     token: serializedTokens.cake,
     quoteToken: serializedTokens.wbnb,
@@ -32,7 +33,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BUSD-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
+      56: Pair.getAddress(mainnetTokens.busd, mainnetTokens.wbnb),
     },
     token: serializedTokens.busd,
     quoteToken: serializedTokens.wbnb,
@@ -45,7 +46,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BP-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x2bF2dEB40639201C9A94c9e33b4852D9AEa5fd2D',
+      56: Pair.getAddress(mainnetTokens.bp, mainnetTokens.wbnb),
     },
     token: serializedTokens.bp,
     quoteToken: serializedTokens.wbnb,
@@ -55,7 +56,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BSCDEFI-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x5B0A3b98C2f01741A11E57A9d0595B254E62F9F2',
+      56: Pair.getAddress(mainnetTokens.bscdefi, mainnetTokens.wbnb),
     },
     token: serializedTokens.bscdefi,
     quoteToken: serializedTokens.wbnb,
@@ -65,7 +66,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'QBT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x67EFeF66A55c4562144B9AcfCFbc62F9E4269b3e',
+      56: Pair.getAddress(mainnetTokens.qbt, mainnetTokens.wbnb),
     },
     token: serializedTokens.qbt,
     quoteToken: serializedTokens.wbnb,
@@ -75,7 +76,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'NAOS-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xcaa662ad41a662b81be2aea5d59ec0697628665f',
+      56: Pair.getAddress(mainnetTokens.naos, mainnetTokens.wbnb),
     },
     token: serializedTokens.naos,
     quoteToken: serializedTokens.wbnb,
@@ -85,7 +86,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'PHA-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x4ddd56e2f34338839BB5953515833950eA680aFb',
+      56: Pair.getAddress(mainnetTokens.pha, mainnetTokens.busd),
     },
     token: serializedTokens.pha,
     quoteToken: serializedTokens.busd,
@@ -95,7 +96,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BEL-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x69DEE989c30b5fFe40867f5FC14F00E4bCE7B681',
+      56: Pair.getAddress(mainnetTokens.bel, mainnetTokens.wbnb),
     },
     token: serializedTokens.bel,
     quoteToken: serializedTokens.wbnb,
@@ -105,7 +106,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BMON-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x00e53C169dA54a7E11172aEEDf8Eb87F060F479e',
+      56: Pair.getAddress(mainnetTokens.bmon, mainnetTokens.wbnb),
     },
     token: serializedTokens.bmon,
     quoteToken: serializedTokens.busd,
@@ -116,7 +117,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'GNT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x3747e3e107223539FD09bb730b055A1f11F78Adf',
+      56: Pair.getAddress(mainnetTokens.gnt, mainnetTokens.wbnb),
     },
     token: serializedTokens.gnt,
     quoteToken: serializedTokens.wbnb,
@@ -127,7 +128,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SFUND-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x74fA517715C4ec65EF01d55ad5335f90dce7CC87',
+      56: Pair.getAddress(mainnetTokens.sfund, mainnetTokens.wbnb),
     },
     token: serializedTokens.sfund,
     quoteToken: serializedTokens.wbnb,
@@ -138,7 +139,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'RUSD-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x59FaC9e98479fc9979aE2a0C7422Af50bCBB9B26',
+      56: Pair.getAddress(mainnetTokens.rusd, mainnetTokens.busd),
     },
     token: serializedTokens.rusd,
     quoteToken: serializedTokens.busd,
@@ -149,7 +150,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'RAMP-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xE834bf723f5bDff34a5D1129F3c31Ea4787Bc76a',
+      56: Pair.getAddress(mainnetTokens.ramp, mainnetTokens.busd),
     },
     token: serializedTokens.ramp,
     quoteToken: serializedTokens.busd,
@@ -159,7 +160,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'POTS-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xF90BAA331Cfd40F094476E752Bf272892170d399',
+      56: Pair.getAddress(mainnetTokens.pots, mainnetTokens.busd),
     },
     token: serializedTokens.pots,
     quoteToken: serializedTokens.busd,
@@ -169,7 +170,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TUSD-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x2e28b9b74d6d99d4697e913b82b41ef1cac51c6c',
+      56: Pair.getAddress(mainnetTokens.tusd, mainnetTokens.busd),
     },
     token: serializedTokens.tusd,
     quoteToken: serializedTokens.busd,
@@ -179,7 +180,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BTT-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xdcfbb12ded3fea12d2a078bc6324131cd14bf835',
+      56: Pair.getAddress(mainnetTokens.btt, mainnetTokens.busd),
     },
     token: serializedTokens.btt,
     quoteToken: serializedTokens.busd,
@@ -189,7 +190,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TRX-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xb5d108578be3750209d1b3a8f45ffee8c5a75146',
+      56: Pair.getAddress(mainnetTokens.trx, mainnetTokens.busd),
     },
     token: serializedTokens.trx,
     quoteToken: serializedTokens.busd,
@@ -199,7 +200,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'WIN-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x6a445ceb72c8b1751755386c3990055ff92e14a0',
+      56: Pair.getAddress(mainnetTokens.win, mainnetTokens.busd),
     },
     token: serializedTokens.win,
     quoteToken: serializedTokens.busd,
@@ -209,7 +210,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BABYCAKE-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xb5e33fE13a821e55ED33C884589a804B1b4F6fD8',
+      56: Pair.getAddress(mainnetTokens.babycake, mainnetTokens.wbnb),
     },
     token: serializedTokens.babycake,
     quoteToken: serializedTokens.wbnb,
@@ -231,7 +232,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'HERO-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xe267018C943E77992e7e515724B07b9CE7938124',
+      56: Pair.getAddress(mainnetTokens.hero, mainnetTokens.wbnb),
     },
     token: serializedTokens.hero,
     quoteToken: serializedTokens.wbnb,
@@ -242,7 +243,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'WSG-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x37Ff7D4459ad96E0B01275E5efffe091f33c2CAD',
+      56: Pair.getAddress(mainnetTokens.wsg, mainnetTokens.wbnb),
     },
     token: serializedTokens.wsg,
     quoteToken: serializedTokens.wbnb,
@@ -253,7 +254,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'MCRN-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xe8D5d81dac092Ae61d097f84EFE230759BF2e522',
+      56: Pair.getAddress(mainnetTokens.mcrn, mainnetTokens.wbnb),
     },
     token: serializedTokens.mcrn,
     quoteToken: serializedTokens.wbnb,
@@ -264,7 +265,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'REVV-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x1cc18962b919ef90085a8b21f8ddc95824fbad9e',
+      56: Pair.getAddress(mainnetTokens.revv, mainnetTokens.wbnb),
     },
     token: serializedTokens.revv,
     quoteToken: serializedTokens.wbnb,
@@ -274,7 +275,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BTT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x946696344e7d4346b223e1cf77035a76690d6a73',
+      56: Pair.getAddress(mainnetTokens.btt, mainnetTokens.wbnb),
     },
     token: serializedTokens.btt,
     quoteToken: serializedTokens.wbnb,
@@ -284,7 +285,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SKILL-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xc19dfd34d3ba5816df9cbdaa02d32a9f8dc6f6fc',
+      56: Pair.getAddress(mainnetTokens.skill, mainnetTokens.wbnb),
     },
     token: serializedTokens.skill,
     quoteToken: serializedTokens.wbnb,
@@ -294,7 +295,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'WIN-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x894bd57afd8efc93d9171cb585d11d0977557425',
+      56: Pair.getAddress(mainnetTokens.win, mainnetTokens.wbnb),
     },
     token: serializedTokens.win,
     quoteToken: serializedTokens.wbnb,
@@ -304,7 +305,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'IF-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x7b4682D2B3f8670b125aF6AEA8d7eD2Daa43Bdc1',
+      56: Pair.getAddress(mainnetTokens.if, mainnetTokens.busd),
     },
     token: serializedTokens.if,
     quoteToken: serializedTokens.busd,
@@ -314,7 +315,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SPS-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xfdfde3af740a22648b9dd66d05698e5095940850',
+      56: Pair.getAddress(mainnetTokens.sps, mainnetTokens.wbnb),
     },
     token: serializedTokens.sps,
     quoteToken: serializedTokens.wbnb,
@@ -324,7 +325,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'C98-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x92247860A03F48d5c6425c7CA35CDcFCB1013AA1',
+      56: Pair.getAddress(mainnetTokens.c98, mainnetTokens.wbnb),
     },
     token: serializedTokens.c98,
     quoteToken: serializedTokens.wbnb,
@@ -334,7 +335,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'AXS-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xC2d00De94795e60FB76Bc37d899170996cBdA436',
+      56: Pair.getAddress(mainnetTokens.axs, mainnetTokens.wbnb),
     },
     token: serializedTokens.axs,
     quoteToken: serializedTokens.wbnb,
@@ -344,7 +345,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'PMON-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xcdb0016d97fd0e7ec2c3b78aa4786cbd8e19c14c',
+      56: Pair.getAddress(mainnetTokens.pmon, mainnetTokens.busd),
     },
     token: serializedTokens.pmon,
     quoteToken: serializedTokens.busd,
@@ -354,7 +355,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TRX-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x3cd338c3bb249b6b3c55799f85a589febbbff9dd',
+      56: Pair.getAddress(mainnetTokens.trx, mainnetTokens.wbnb),
     },
     token: serializedTokens.trx,
     quoteToken: serializedTokens.wbnb,
@@ -364,7 +365,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'CHESS-USDC LP',
     lpAddresses: {
       97: '',
-      56: '0x1472976e0b97f5b2fc93f1fff14e2b5c4447b64f',
+      56: Pair.getAddress(mainnetTokens.chess, mainnetTokens.usdc),
     },
     token: serializedTokens.chess,
     quoteToken: serializedTokens.usdc,
@@ -374,7 +375,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TITAN-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x9392a1f471d9aa14c0b8eb28bd7a3f4a814727be',
+      56: Pair.getAddress(mainnetTokens.titan, mainnetTokens.busd),
     },
     token: serializedTokens.titan,
     quoteToken: serializedTokens.busd,
@@ -384,7 +385,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ONE-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x9d2296e2fe3cdbf2eb3e3e2ca8811bafa42eedff',
+      56: Pair.getAddress(mainnetTokens.harmony, mainnetTokens.wbnb),
     },
     token: serializedTokens.harmony,
     quoteToken: serializedTokens.wbnb,
@@ -394,7 +395,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'MASK-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x46c6bA71af7648cD7f67D0AD4d16f75bE251ed12',
+      56: Pair.getAddress(mainnetTokens.mask, mainnetTokens.wbnb),
     },
     token: serializedTokens.mask,
     quoteToken: serializedTokens.wbnb,
@@ -404,7 +405,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DVI-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x89ebf9cd99864f6e51bd7a578965922029cab977',
+      56: Pair.getAddress(mainnetTokens.dvi, mainnetTokens.wbnb),
     },
     token: serializedTokens.dvi,
     quoteToken: serializedTokens.wbnb,
@@ -424,7 +425,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ADX-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x0648ff5de80adf54aac07ece2490f50a418dde23',
+      56: Pair.getAddress(mainnetTokens.adx, mainnetTokens.busd),
     },
     token: serializedTokens.adx,
     quoteToken: serializedTokens.busd,
@@ -434,7 +435,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'USDC-USDT LP',
     lpAddresses: {
       97: '',
-      56: '0xec6557348085aa57c72514d67070dc863c0a5a8c',
+      56: Pair.getAddress(mainnetTokens.usdc, mainnetTokens.usdt),
     },
     token: serializedTokens.usdc,
     quoteToken: serializedTokens.usdt,
@@ -444,7 +445,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'CAKE-USDT LP',
     lpAddresses: {
       97: '',
-      56: '0xA39Af17CE4a8eb807E076805Da1e2B8EA7D0755b',
+      56: Pair.getAddress(mainnetTokens.cake, mainnetTokens.usdt),
     },
     token: serializedTokens.cake,
     quoteToken: serializedTokens.usdt,
@@ -454,7 +455,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SUTER-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x2d5DB889392Bc3c8B023A8631ca230A033eEA1B8',
+      56: Pair.getAddress(mainnetTokens.suter, mainnetTokens.wbnb),
     },
     token: serializedTokens.suter,
     quoteToken: serializedTokens.wbnb,
@@ -464,7 +465,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BSCPAD-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xba01662e978de7d67f8ffc937726215eb8995d17',
+      56: Pair.getAddress(mainnetTokens.bscpad, mainnetTokens.wbnb),
     },
     token: serializedTokens.bscpad,
     quoteToken: serializedTokens.wbnb,
@@ -474,7 +475,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'RABBIT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x04b56A5B3f45CFeaFbfDCFc999c14be5434f2146',
+      56: Pair.getAddress(mainnetTokens.rabbit, mainnetTokens.wbnb),
     },
     token: serializedTokens.rabbit,
     quoteToken: serializedTokens.wbnb,
@@ -484,7 +485,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'WAULTx-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x3e4370204f598205998143F07ebCC486E441b456',
+      56: Pair.getAddress(mainnetTokens.waultx, mainnetTokens.wbnb),
     },
     token: serializedTokens.waultx,
     quoteToken: serializedTokens.wbnb,
@@ -494,7 +495,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'WEX-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x547A355E70cd1F8CAF531B950905aF751dBEF5E6',
+      56: Pair.getAddress(mainnetTokens.wex, mainnetTokens.wbnb),
     },
     token: serializedTokens.wex,
     quoteToken: serializedTokens.wbnb,
@@ -504,7 +505,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'FORM-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x3E19C18Fe3458A6065D8F0844cB7Eae52C9DAE07',
+      56: Pair.getAddress(mainnetTokens.form, mainnetTokens.busd),
     },
     token: serializedTokens.form,
     quoteToken: serializedTokens.busd,
@@ -514,7 +515,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ORBS-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xB87b857670A44356f2b70337E0F218713D2378e8',
+      56: Pair.getAddress(mainnetTokens.orbs, mainnetTokens.busd),
     },
     token: serializedTokens.orbs,
     quoteToken: serializedTokens.busd,
@@ -524,7 +525,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DG-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x8b2824d57eebf07f5aff5c91fa67ed7c501a9f43',
+      56: Pair.getAddress(mainnetTokens.$dg, mainnetTokens.wbnb),
     },
     token: serializedTokens.$dg,
     quoteToken: serializedTokens.wbnb,
@@ -534,7 +535,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'WOO-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x89eE0491CE55d2f7472A97602a95426216167189',
+      56: Pair.getAddress(mainnetTokens.woo, mainnetTokens.wbnb),
     },
     token: serializedTokens.woo,
     quoteToken: serializedTokens.wbnb,
@@ -544,7 +545,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'HTB-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x2a995d355d5df641e878c0f366685741fd18d004',
+      56: Pair.getAddress(mainnetTokens.htb, mainnetTokens.wbnb),
     },
     token: serializedTokens.htb,
     quoteToken: serializedTokens.wbnb,
@@ -554,7 +555,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'JGN-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x7275278C94b5e20708380561C4Af98F38dDC6374',
+      56: Pair.getAddress(mainnetTokens.jgn, mainnetTokens.wbnb),
     },
     token: serializedTokens.jgn,
     quoteToken: serializedTokens.wbnb,
@@ -564,7 +565,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DFT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x24d3B0eD4C444A4f6882d527cBF67aDc8c026582',
+      56: Pair.getAddress(mainnetTokens.dft, mainnetTokens.wbnb),
     },
     token: serializedTokens.dft,
     quoteToken: serializedTokens.wbnb,
@@ -574,7 +575,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'HAI-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x289841bFb694767bCb56fBc7B741aB4B4D97D490',
+      56: Pair.getAddress(mainnetTokens.hai, mainnetTokens.wbnb),
     },
     token: serializedTokens.hai,
     quoteToken: serializedTokens.wbnb,
@@ -584,7 +585,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'O3-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x7759283571Da8c0928786A96AE601944E10461Ff',
+      56: Pair.getAddress(mainnetTokens.o3, mainnetTokens.busd),
     },
     token: serializedTokens.o3,
     quoteToken: serializedTokens.busd,
@@ -594,7 +595,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'AMPL-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x6e98beb694ff1cdb1ee130edd2b21b0298683d58',
+      56: Pair.getAddress(mainnetTokens.ampl, mainnetTokens.busd),
     },
     token: serializedTokens.ampl,
     quoteToken: serializedTokens.busd,
@@ -604,7 +605,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ODDZ-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x3c2c77353E2F6AC1578807b6b2336Bf3a3CbB014',
+      56: Pair.getAddress(mainnetTokens.oddz, mainnetTokens.wbnb),
     },
     token: serializedTokens.oddz,
     quoteToken: serializedTokens.wbnb,
@@ -614,7 +615,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ETH-USDC LP',
     lpAddresses: {
       97: '',
-      56: '0xEa26B78255Df2bBC31C1eBf60010D78670185bD0',
+      56: Pair.getAddress(mainnetTokens.eth, mainnetTokens.usdc),
     },
     token: serializedTokens.eth,
     quoteToken: serializedTokens.usdc,
@@ -624,7 +625,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BTCB-ETH LP',
     lpAddresses: {
       97: '',
-      56: '0xD171B26E4484402de70e3Ea256bE5A2630d7e88D',
+      56: Pair.getAddress(mainnetTokens.btcb, mainnetTokens.eth),
     },
     token: serializedTokens.btcb,
     quoteToken: serializedTokens.eth,
@@ -634,7 +635,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BONDLY-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xb8b4383B49d451BBeA63BC4421466E1086da6f18',
+      56: Pair.getAddress(mainnetTokens.bondly, mainnetTokens.wbnb),
     },
     token: serializedTokens.bondly,
     quoteToken: serializedTokens.wbnb,
@@ -644,7 +645,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'MARSH-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x222f93187f15f354d41ff6a7703ef7e18cdd5103',
+      56: Pair.getAddress(mainnetTokens.marsh, mainnetTokens.wbnb),
     },
     token: serializedTokens.marsh,
     quoteToken: serializedTokens.wbnb,
@@ -654,7 +655,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BORING-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xDfA808Da5CFB9ABA5Fb3748FF85888F79174F378',
+      56: Pair.getAddress(mainnetTokens.boring, mainnetTokens.wbnb),
     },
     token: serializedTokens.boring,
     quoteToken: serializedTokens.wbnb,
@@ -664,7 +665,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'MBOX-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x8FA59693458289914dB0097F5F366d771B7a7C3F',
+      56: Pair.getAddress(mainnetTokens.mbox, mainnetTokens.wbnb),
     },
     token: serializedTokens.mbox,
     quoteToken: serializedTokens.wbnb,
@@ -674,7 +675,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ATA-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xef7767677867552cfa699148b96a03358a9be779',
+      56: Pair.getAddress(mainnetTokens.ata, mainnetTokens.wbnb),
     },
     token: serializedTokens.ata,
     quoteToken: serializedTokens.wbnb,
@@ -684,7 +685,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'MX-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x41f049d990d38305504631c9835f6f856bf1ba67',
+      56: Pair.getAddress(mainnetTokens.mx, mainnetTokens.busd),
     },
     token: serializedTokens.mx,
     quoteToken: serializedTokens.busd,
@@ -694,7 +695,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'bCFX-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xA0387eBeA6be90849c2261b911fBBD52B4C9eAC4',
+      56: Pair.getAddress(mainnetTokens.bcfx, mainnetTokens.busd),
     },
     token: serializedTokens.bcfx,
     quoteToken: serializedTokens.busd,
@@ -704,7 +705,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'QKC-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x8853e3309a31583ea438f7704681f46f0d4d909b',
+      56: Pair.getAddress(mainnetTokens.qkc, mainnetTokens.busd),
     },
     token: serializedTokens.qkc,
     quoteToken: serializedTokens.busd,
@@ -714,7 +715,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'KTN-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x48028de4a9b0d3d91180333d796021ec7757ba1b',
+      56: Pair.getAddress(mainnetTokens.ktn, mainnetTokens.wbnb),
     },
     token: serializedTokens.ktn,
     quoteToken: serializedTokens.wbnb,
@@ -724,7 +725,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'MTRG-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x4dcA4D427511bC327639b222DA18FA5e334F686F',
+      56: Pair.getAddress(mainnetTokens.mtrg, mainnetTokens.busd),
     },
     token: serializedTokens.mtrg,
     quoteToken: serializedTokens.busd,
@@ -734,7 +735,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SWG-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x226af4e918fcf3e62e5eeec867a3e78aaa7bb01d',
+      56: Pair.getAddress(mainnetTokens.swg, mainnetTokens.wbnb),
     },
     token: serializedTokens.swg,
     quoteToken: serializedTokens.wbnb,
@@ -744,7 +745,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'VRT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xef5212ada83ec2cc105c409df10b8806d20e3b35',
+      56: Pair.getAddress(mainnetTokens.vrt, mainnetTokens.wbnb),
     },
     token: serializedTokens.vrt,
     quoteToken: serializedTokens.wbnb,
@@ -754,7 +755,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'EZ-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x51bf99bbae59b67e5ce2fa9c17b683384773f8b3',
+      56: Pair.getAddress(mainnetTokens.ez, mainnetTokens.wbnb),
     },
     token: serializedTokens.ez,
     quoteToken: serializedTokens.wbnb,
@@ -764,7 +765,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'KALM-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xc74f7243766269dec5b85b0ef4af186e909c1b06',
+      56: Pair.getAddress(mainnetTokens.kalm, mainnetTokens.wbnb),
     },
     token: serializedTokens.kalm,
     quoteToken: serializedTokens.wbnb,
@@ -774,7 +775,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'pOPEN-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x1090c996fd1490d15dd7906322ee676a5cc3cf82',
+      56: Pair.getAddress(mainnetTokens.popen, mainnetTokens.wbnb),
     },
     token: serializedTokens.popen,
     quoteToken: serializedTokens.wbnb,
@@ -784,7 +785,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'LIEN-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xa4963B38b271c0D714593063497Fc786Fa4029Ce',
+      56: Pair.getAddress(mainnetTokens.lien, mainnetTokens.wbnb),
     },
     token: serializedTokens.lien,
     quoteToken: serializedTokens.wbnb,
@@ -794,7 +795,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'WELL-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x1d94cb25895abd6ccfef863c53372bb462aa6b86',
+      56: Pair.getAddress(mainnetTokens.well, mainnetTokens.busd),
     },
     token: serializedTokens.well,
     quoteToken: serializedTokens.busd,
@@ -804,7 +805,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DERI-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xdc7188ac11e124b1fa650b73ba88bf615ef15256',
+      56: Pair.getAddress(mainnetTokens.deri, mainnetTokens.busd),
     },
     token: serializedTokens.deri,
     quoteToken: serializedTokens.busd,
@@ -814,7 +815,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'CHR-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x6045931e511ef7e53a4a817f971e0ca28c758809',
+      56: Pair.getAddress(mainnetTokens.chr, mainnetTokens.busd),
     },
     token: serializedTokens.chr,
     quoteToken: serializedTokens.busd,
@@ -824,7 +825,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'CAKE-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x804678fa97d91B974ec2af3c843270886528a9E6',
+      56: Pair.getAddress(mainnetTokens.cake, mainnetTokens.busd),
     },
     token: serializedTokens.cake,
     quoteToken: serializedTokens.busd,
@@ -834,7 +835,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'CYC-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xecf30fbecfa642012f54212a3be92eef1e48edac',
+      56: Pair.getAddress(mainnetTokens.cyc, mainnetTokens.wbnb),
     },
     token: serializedTokens.cyc,
     quoteToken: serializedTokens.wbnb,
@@ -844,7 +845,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'XEND-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xcecfc2789af72ed151589a96a59f3a1abc65c3b5',
+      56: Pair.getAddress(mainnetTokens.xend, mainnetTokens.wbnb),
     },
     token: serializedTokens.xend,
     quoteToken: serializedTokens.wbnb,
@@ -854,7 +855,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'HGET-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xF74ee1e10e097dc326a2ad004F9Cc95CB71088d3',
+      56: Pair.getAddress(mainnetTokens.hget, mainnetTokens.wbnb),
     },
     token: serializedTokens.hget,
     quoteToken: serializedTokens.wbnb,
@@ -864,7 +865,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'HOTCROSS-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xf23bad605e94de0e3b60c9718a43a94a5af43915',
+      56: Pair.getAddress(mainnetTokens.hotcross, mainnetTokens.wbnb),
     },
     token: serializedTokens.hotcross,
     quoteToken: serializedTokens.wbnb,
@@ -874,7 +875,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'RFOX-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x8e04b3972b5c25766c681dfd30a8a1cbf6dcc8c1',
+      56: Pair.getAddress(mainnetTokens.rfox, mainnetTokens.wbnb),
     },
     token: serializedTokens.rfox,
     quoteToken: serializedTokens.wbnb,
@@ -884,7 +885,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'WMASS-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xec95ff6281c3ad8e27372fa6675eb337640b8e5e',
+      56: Pair.getAddress(mainnetTokens.wmass, mainnetTokens.busd),
     },
     token: serializedTokens.wmass,
     quoteToken: serializedTokens.busd,
@@ -894,7 +895,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'UBXT-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x8d3ff27d2ad6a9556b7c4f82f4d602d20114bc90',
+      56: Pair.getAddress(mainnetTokens.ubxt, mainnetTokens.busd),
     },
     token: serializedTokens.ubxt,
     quoteToken: serializedTokens.busd,
@@ -904,7 +905,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BTR-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xbc7ac609fa730239190a70952e64ee1dfc2530ac',
+      56: Pair.getAddress(mainnetTokens.btr, mainnetTokens.busd),
     },
     token: serializedTokens.btr,
     quoteToken: serializedTokens.busd,
@@ -914,7 +915,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'τDOGE-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x2030845Ce7d4224523fd2F03Ca20Afe4aAD1D890',
+      56: Pair.getAddress(mainnetTokens.τdoge, mainnetTokens.wbnb),
     },
     token: serializedTokens.τdoge,
     quoteToken: serializedTokens.wbnb,
@@ -924,7 +925,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ONE-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x4d057f769d930eafd597b49d6fb2e1009a73a702',
+      56: Pair.getAddress(mainnetTokens.one, mainnetTokens.busd),
     },
     token: serializedTokens.one,
     quoteToken: serializedTokens.busd,
@@ -944,7 +945,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DOGE-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xac109c8025f272414fd9e2faa805a583708a017f',
+      56: Pair.getAddress(mainnetTokens.doge, mainnetTokens.wbnb),
     },
     token: serializedTokens.doge,
     quoteToken: serializedTokens.wbnb,
@@ -954,7 +955,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'bMXX-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xc20A92a1424b29b78DFaF92FD35D4cf8A06419B4',
+      56: Pair.getAddress(mainnetTokens.bmxx, mainnetTokens.wbnb),
     },
     token: serializedTokens.bmxx,
     quoteToken: serializedTokens.wbnb,
@@ -964,7 +965,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'OIN-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x6a00e41561ac36a78dba1d09091b0f00c4e53724',
+      56: Pair.getAddress(mainnetTokens.oin, mainnetTokens.busd),
     },
     token: serializedTokens.oin,
     quoteToken: serializedTokens.busd,
@@ -974,7 +975,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'HYFI-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x0716725d78081a9e0e1ff81516f5415b399e274d',
+      56: Pair.getAddress(mainnetTokens.hyfi, mainnetTokens.wbnb),
     },
     token: serializedTokens.hyfi,
     quoteToken: serializedTokens.wbnb,
@@ -984,7 +985,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'KUN-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xea61020e5a128d2bec67d48f7cfbe3408db7e391',
+      56: Pair.getAddress(mainnetTokens.kun, mainnetTokens.busd),
     },
     token: serializedTokens.kun,
     quoteToken: serializedTokens.busd,
@@ -994,7 +995,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'KUN-QSD LP',
     lpAddresses: {
       97: '',
-      56: '0x4eafbf68a2d50291ffd163d4e00ad0f040aae707',
+      56: Pair.getAddress(mainnetTokens.kun, mainnetTokens.qsd),
     },
     token: serializedTokens.kun,
     quoteToken: serializedTokens.qsd,
@@ -1004,7 +1005,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'MATH-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xb7cada0f120ca46745a024e6b9fe907b2fe10cf3',
+      56: Pair.getAddress(mainnetTokens.math, mainnetTokens.busd),
     },
     token: serializedTokens.math,
     quoteToken: serializedTokens.busd,
@@ -1014,7 +1015,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'mCOIN-UST LP',
     lpAddresses: {
       97: '',
-      56: '0xbcf01a42f6bc42f3cfe81b05519565044d65d22a',
+      56: Pair.getAddress(mainnetTokens.mcoin, mainnetTokens.ust),
     },
     token: serializedTokens.mcoin,
     quoteToken: serializedTokens.ust,
@@ -1024,7 +1025,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'PNT-pBTC LP',
     lpAddresses: {
       97: '',
-      56: '0xdaa89d335926628367b47852989bb22ee62ca5de',
+      56: Pair.getAddress(mainnetTokens.pnt, mainnetTokens.pbtc),
     },
     token: serializedTokens.pnt,
     quoteToken: serializedTokens.pbtc,
@@ -1034,7 +1035,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'xMARK-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xAa40f1AC20AAFcFEE8595Da606D78C503C7e70A3',
+      56: Pair.getAddress(mainnetTokens.xmark, mainnetTokens.busd),
     },
     token: serializedTokens.xmark,
     quoteToken: serializedTokens.busd,
@@ -1044,7 +1045,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BTCB-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xf45cd219aef8618a92baa7ad848364a158a24f33',
+      56: Pair.getAddress(mainnetTokens.btcb, mainnetTokens.busd),
     },
     token: serializedTokens.btcb,
     quoteToken: serializedTokens.busd,
@@ -1054,7 +1055,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'LMT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x8271d7eafeeb8f24d7c9fe1acce2ae20611972e5',
+      56: Pair.getAddress(mainnetTokens.lmt, mainnetTokens.wbnb),
     },
     token: serializedTokens.lmt,
     quoteToken: serializedTokens.wbnb,
@@ -1064,7 +1065,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DFD-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x029d66f9c0469450b7b4834b8ddc6a1118cec3e1',
+      56: Pair.getAddress(mainnetTokens.dfd, mainnetTokens.busd),
     },
     token: serializedTokens.dfd,
     quoteToken: serializedTokens.busd,
@@ -1074,7 +1075,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ALPACA-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x7752e1fa9f3a2e860856458517008558deb989e3',
+      56: Pair.getAddress(mainnetTokens.alpaca, mainnetTokens.busd),
     },
     token: serializedTokens.alpaca,
     quoteToken: serializedTokens.busd,
@@ -1084,7 +1085,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'τBTC-BTCB LP',
     lpAddresses: {
       97: '',
-      56: '0x8046fa66753928F35f7Db23ae0188ee6743C2FBA',
+      56: Pair.getAddress(mainnetTokens.τbtc, mainnetTokens.btcb),
     },
     token: serializedTokens.τbtc,
     quoteToken: serializedTokens.btcb,
@@ -1094,7 +1095,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SWINGBY-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x4Fd6D315bEf387fAD2322fbc64368fC443F0886D',
+      56: Pair.getAddress(mainnetTokens.swingby, mainnetTokens.wbnb),
     },
     token: serializedTokens.swingby,
     quoteToken: serializedTokens.wbnb,
@@ -1104,7 +1105,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'XED-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xa7A0b605343dF36B748FF4B5f7578b3F2D0651CE',
+      56: Pair.getAddress(mainnetTokens.xed, mainnetTokens.wbnb),
     },
     token: serializedTokens.xed,
     quoteToken: serializedTokens.wbnb,
@@ -1114,7 +1115,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'HAKKA-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x2C624C9Ecf16Cb81aB85cC2C0B0c5e12A09AFDa6',
+      56: Pair.getAddress(mainnetTokens.hakka, mainnetTokens.busd),
     },
     token: serializedTokens.hakka,
     quoteToken: serializedTokens.busd,
@@ -1124,7 +1125,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'CGG-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x0604471c532F9fEBAD3E37190B667f44BD0894b3',
+      56: Pair.getAddress(mainnetTokens.cgg, mainnetTokens.wbnb),
     },
     token: serializedTokens.cgg,
     quoteToken: serializedTokens.wbnb,
@@ -1134,7 +1135,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'bROOBEE-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x950FD020F8E4B8C57285EC7020b7a204348dadFa',
+      56: Pair.getAddress(mainnetTokens.broobee, mainnetTokens.wbnb),
     },
     token: serializedTokens.broobee,
     quoteToken: serializedTokens.wbnb,
@@ -1144,7 +1145,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'HZN-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xDc9a574b9B341D4a98cE29005b614e1E27430E74',
+      56: Pair.getAddress(mainnetTokens.hzn, mainnetTokens.wbnb),
     },
     token: serializedTokens.hzn,
     quoteToken: serializedTokens.wbnb,
@@ -1154,7 +1155,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ALPA-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x4cC442220BE1cE560C1f2573f8CA8f460B3E4172',
+      56: Pair.getAddress(mainnetTokens.alpa, mainnetTokens.wbnb),
     },
     token: serializedTokens.alpa,
     quoteToken: serializedTokens.wbnb,
@@ -1164,7 +1165,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'PERL-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x61010e6CbA3b56ba47E9dFd56Da682daCFe76131',
+      56: Pair.getAddress(mainnetTokens.perl, mainnetTokens.wbnb),
     },
     token: serializedTokens.perl,
     quoteToken: serializedTokens.wbnb,
@@ -1174,7 +1175,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TLM-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xE6b421a4408c82381b226Ab5B6F8C4b639044359',
+      56: Pair.getAddress(mainnetTokens.tlm, mainnetTokens.wbnb),
     },
     token: serializedTokens.tlm,
     quoteToken: serializedTokens.wbnb,
@@ -1184,7 +1185,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'EPS-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xddE420cbB3794ebD8FFC3Ac69F9c78e5d1411870',
+      56: Pair.getAddress(mainnetTokens.eps, mainnetTokens.wbnb),
     },
     token: serializedTokens.eps,
     quoteToken: serializedTokens.wbnb,
@@ -1194,7 +1195,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ARPA-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x9730c791743300E9f984C9264395ce705A55Da7c',
+      56: Pair.getAddress(mainnetTokens.arpa, mainnetTokens.wbnb),
     },
     token: serializedTokens.arpa,
     quoteToken: serializedTokens.wbnb,
@@ -1204,7 +1205,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ITAM-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xd02DA76c813b9cd4516eD50442923E625f90228f',
+      56: Pair.getAddress(mainnetTokens.itam, mainnetTokens.wbnb),
     },
     token: serializedTokens.itam,
     quoteToken: serializedTokens.wbnb,
@@ -1214,7 +1215,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TKO-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xFFd4B200d3C77A0B691B5562D804b3bd54294e6e',
+      56: Pair.getAddress(mainnetTokens.tko, mainnetTokens.wbnb),
     },
     token: serializedTokens.tko,
     quoteToken: serializedTokens.wbnb,
@@ -1224,7 +1225,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'APYS-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x510b29a93ebf098f3fC24A16541aAA0114D07056',
+      56: Pair.getAddress(mainnetTokens.apys, mainnetTokens.wbnb),
     },
     token: serializedTokens.apys,
     quoteToken: serializedTokens.wbnb,
@@ -1234,7 +1235,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'HOO-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x3e42C1f7239231E3752B507764445dd8e6A570d5',
+      56: Pair.getAddress(mainnetTokens.hoo, mainnetTokens.busd),
     },
     token: serializedTokens.hoo,
     quoteToken: serializedTokens.busd,
@@ -1244,7 +1245,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'EASY-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x20c6De8983Fb2D641c55004646aEF40b4EA66E18',
+      56: Pair.getAddress(mainnetTokens.easy, mainnetTokens.wbnb),
     },
     token: serializedTokens.easy,
     quoteToken: serializedTokens.wbnb,
@@ -1254,7 +1255,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'NRV-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xE482249Cd295C0d1e9D2baAEE71e66de21024C68',
+      56: Pair.getAddress(mainnetTokens.nrv, mainnetTokens.wbnb),
     },
     token: serializedTokens.nrv,
     quoteToken: serializedTokens.wbnb,
@@ -1264,7 +1265,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DEGO-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xF1Ec67fA1881796BFf63Db3E1A301cE9cb787Fad',
+      56: Pair.getAddress(mainnetTokens.dego, mainnetTokens.wbnb),
     },
     token: serializedTokens.dego,
     quoteToken: serializedTokens.wbnb,
@@ -1274,7 +1275,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'pBTC-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x0362ba706DFE8ED12Ec1470aB171d8Dcb1C72B8D',
+      56: Pair.getAddress(mainnetTokens.pbtc, mainnetTokens.wbnb),
     },
     token: serializedTokens.pbtc,
     quoteToken: serializedTokens.wbnb,
@@ -1284,7 +1285,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SWTH-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x123D475E13aA54A43a7421d94CAa4459dA021c77',
+      56: Pair.getAddress(mainnetTokens.swth, mainnetTokens.wbnb),
     },
     token: serializedTokens.swth,
     quoteToken: serializedTokens.wbnb,
@@ -1294,7 +1295,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ZIL-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x6A97867a4b7Eb7646ffB1F359ad582e9903aa1C2',
+      56: Pair.getAddress(mainnetTokens.zil, mainnetTokens.wbnb),
     },
     token: serializedTokens.zil,
     quoteToken: serializedTokens.wbnb,
@@ -1304,7 +1305,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'pCWS-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x6615CE60D71513aA4849269dD63821D324A23F8C',
+      56: Pair.getAddress(mainnetTokens.pcws, mainnetTokens.wbnb),
     },
     token: serializedTokens.pcws,
     quoteToken: serializedTokens.wbnb,
@@ -1314,7 +1315,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'bBADGER-BTCB LP',
     lpAddresses: {
       97: '',
-      56: '0x5A58609dA96469E9dEf3fE344bC39B00d18eb9A5',
+      56: Pair.getAddress(mainnetTokens.bbadger, mainnetTokens.btcb),
     },
     token: serializedTokens.bbadger,
     quoteToken: serializedTokens.btcb,
@@ -1324,7 +1325,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'bDIGG-BTCB LP',
     lpAddresses: {
       97: '',
-      56: '0x81d776C90c89B8d51E9497D58338933127e2fA80',
+      56: Pair.getAddress(mainnetTokens.bdigg, mainnetTokens.btcb),
     },
     token: serializedTokens.bdigg,
     quoteToken: serializedTokens.btcb,
@@ -1334,7 +1335,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'LTO-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xa5Bb44c6F5fD9B836E5a654c8AbbCCc96A15deE5',
+      56: Pair.getAddress(mainnetTokens.lto, mainnetTokens.wbnb),
     },
     token: serializedTokens.lto,
     quoteToken: serializedTokens.wbnb,
@@ -1344,7 +1345,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'MIR-UST LP',
     lpAddresses: {
       97: '',
-      56: '0x89666d026696660e93Bf6edf57B71A68615768B7',
+      56: Pair.getAddress(mainnetTokens.mir, mainnetTokens.ust),
     },
     token: serializedTokens.mir,
     quoteToken: serializedTokens.ust,
@@ -1354,7 +1355,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TRADE-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x8F6baf368E7A4f6e2C9c995f22702d5e654A0237',
+      56: Pair.getAddress(mainnetTokens.trade, mainnetTokens.wbnb),
     },
     token: serializedTokens.trade,
     quoteToken: serializedTokens.wbnb,
@@ -1364,7 +1365,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DUSK-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x678EDb8B268e73dB57b7694c163e1dc296b6e219',
+      56: Pair.getAddress(mainnetTokens.dusk, mainnetTokens.wbnb),
     },
     token: serializedTokens.dusk,
     quoteToken: serializedTokens.wbnb,
@@ -1374,7 +1375,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BIFI-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x3f1A9f3D9aaD8bD339eD4853F345d2eF89fbfE0c',
+      56: Pair.getAddress(mainnetTokens.bifi, mainnetTokens.wbnb),
     },
     token: serializedTokens.bifi,
     quoteToken: serializedTokens.wbnb,
@@ -1384,7 +1385,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TXL-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x1434BB50196A0C7eA825940b1DFd8aAd25d79817',
+      56: Pair.getAddress(mainnetTokens.txl, mainnetTokens.busd),
     },
     token: serializedTokens.txl,
     quoteToken: serializedTokens.busd,
@@ -1394,7 +1395,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'COS-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xe98585bBb2dc81854fF100A3d9D7B0F53E0dafEd',
+      56: Pair.getAddress(mainnetTokens.cos, mainnetTokens.wbnb),
     },
     token: serializedTokens.cos,
     quoteToken: serializedTokens.wbnb,
@@ -1404,7 +1405,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BUNNY-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x5aFEf8567414F29f0f927A0F2787b188624c10E2',
+      56: Pair.getAddress(mainnetTokens.bunny, mainnetTokens.wbnb),
     },
     token: serializedTokens.bunny,
     quoteToken: serializedTokens.wbnb,
@@ -1414,7 +1415,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ALICE-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xcAD7019D6d84a3294b0494aEF02e73BD0f2572Eb',
+      56: Pair.getAddress(mainnetTokens.alice, mainnetTokens.wbnb),
     },
     token: serializedTokens.alice,
     quoteToken: serializedTokens.wbnb,
@@ -1424,7 +1425,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'FOR-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xE60B4e87645093A42fa9dcC5d0C8Df6E67f1f9d2',
+      56: Pair.getAddress(mainnetTokens.for, mainnetTokens.busd),
     },
     token: serializedTokens.for,
     quoteToken: serializedTokens.busd,
@@ -1434,7 +1435,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BUX-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x222C3CbB89647bF77822435Bd4c234A04272A77A',
+      56: Pair.getAddress(mainnetTokens.bux, mainnetTokens.wbnb),
     },
     token: serializedTokens.bux,
     quoteToken: serializedTokens.wbnb,
@@ -1444,7 +1445,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'NULS-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x853784B7BDe87d858555715c0123374242db7943',
+      56: Pair.getAddress(mainnetTokens.nuls, mainnetTokens.busd),
     },
     token: serializedTokens.nuls,
     quoteToken: serializedTokens.busd,
@@ -1454,7 +1455,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BELT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xF3Bc6FC080ffCC30d93dF48BFA2aA14b869554bb',
+      56: Pair.getAddress(mainnetTokens.belt, mainnetTokens.wbnb),
     },
     token: serializedTokens.belt,
     quoteToken: serializedTokens.wbnb,
@@ -1464,7 +1465,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BFI-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x153Ad7d25B0b810497483d0cEE8AF42Fc533FeC8',
+      56: Pair.getAddress(mainnetTokens.bfi, mainnetTokens.wbnb),
     },
     token: serializedTokens.bfi,
     quoteToken: serializedTokens.wbnb,
@@ -1474,7 +1475,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DEXE-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x3578B1f9BCE98D2F4D293b422d8850fdf48B1f21',
+      56: Pair.getAddress(mainnetTokens.dexe, mainnetTokens.busd),
     },
     token: serializedTokens.dexe,
     quoteToken: serializedTokens.busd,
@@ -1484,7 +1485,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TPT-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x6D0c831254221ba121fB53fb44Df289A6558867d',
+      56: Pair.getAddress(mainnetTokens.tpt, mainnetTokens.busd),
     },
     token: serializedTokens.tpt,
     quoteToken: serializedTokens.busd,
@@ -1494,7 +1495,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'WATCH-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x13321AcfF4A27f3d2bcA64b8bEaC6e5FdAAAf12C',
+      56: Pair.getAddress(mainnetTokens.watch, mainnetTokens.wbnb),
     },
     token: serializedTokens.watch,
     quoteToken: serializedTokens.wbnb,
@@ -1504,7 +1505,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'IOTX-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xc13aA76AAc067c86aE38028019F414D731b3D86A',
+      56: Pair.getAddress(mainnetTokens.iotx, mainnetTokens.busd),
     },
     token: serializedTokens.iotx,
     quoteToken: serializedTokens.busd,
@@ -1514,7 +1515,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BOR-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xe094c686aD6cDda57b9564457F541FBF099B948A',
+      56: Pair.getAddress(mainnetTokens.bor, mainnetTokens.wbnb),
     },
     token: serializedTokens.bor,
     quoteToken: serializedTokens.wbnb,
@@ -1524,7 +1525,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'bOPEN-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xc7A9c2af263ebB86139Cca9349e49b17129Ba033',
+      56: Pair.getAddress(mainnetTokens.bopen, mainnetTokens.wbnb),
     },
     token: serializedTokens.bopen,
     quoteToken: serializedTokens.wbnb,
@@ -1534,7 +1535,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SUSHI-ETH LP',
     lpAddresses: {
       97: '',
-      56: '0x16aFc4F2Ad82986bbE2a4525601F8199AB9c832D',
+      56: Pair.getAddress(mainnetTokens.sushi, mainnetTokens.eth),
     },
     token: serializedTokens.sushi,
     quoteToken: serializedTokens.eth,
@@ -1544,7 +1545,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DODO-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xA9986Fcbdb23c2E8B11AB40102990a08f8E58f06',
+      56: Pair.getAddress(mainnetTokens.dodo, mainnetTokens.wbnb),
     },
     token: serializedTokens.dodo,
     quoteToken: serializedTokens.wbnb,
@@ -1554,7 +1555,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BRY-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x21dD71aB78EDE3033c976948f769D506E4F489eE',
+      56: Pair.getAddress(mainnetTokens.bry, mainnetTokens.wbnb),
     },
     token: serializedTokens.bry,
     quoteToken: serializedTokens.wbnb,
@@ -1564,7 +1565,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ZEE-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x8e799cB0737525CeB8A6C6Ad07f748535fF6377B',
+      56: Pair.getAddress(mainnetTokens.zee, mainnetTokens.wbnb),
     },
     token: serializedTokens.zee,
     quoteToken: serializedTokens.wbnb,
@@ -1574,7 +1575,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SWGb-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x856f9AD94cA8680B899214Bb1EB3d235a3C33Afe',
+      56: Pair.getAddress(mainnetTokens.swgb, mainnetTokens.wbnb),
     },
     token: serializedTokens.swgb,
     quoteToken: serializedTokens.wbnb,
@@ -1584,7 +1585,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'COMP-ETH LP',
     lpAddresses: {
       97: '',
-      56: '0x37908620dEf1491Dd591b5a2d16022A33cDDA415',
+      56: Pair.getAddress(mainnetTokens.comp, mainnetTokens.eth),
     },
     token: serializedTokens.comp,
     quoteToken: serializedTokens.eth,
@@ -1594,7 +1595,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SFP-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x942b294e59a8c47a0F7F20DF105B082710F7C305',
+      56: Pair.getAddress(mainnetTokens.sfp, mainnetTokens.wbnb),
     },
     token: serializedTokens.sfp,
     quoteToken: serializedTokens.wbnb,
@@ -1604,7 +1605,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'LINA-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0xC5768c5371568Cf1114cddD52CAeD163A42626Ed',
+      56: Pair.getAddress(mainnetTokens.lina, mainnetTokens.busd),
     },
     token: serializedTokens.lina,
     quoteToken: serializedTokens.busd,
@@ -1614,7 +1615,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'LIT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x1F37d4226d23d09044B8005c127C0517BD7e94fD',
+      56: Pair.getAddress(mainnetTokens.lit, mainnetTokens.wbnb),
     },
     token: serializedTokens.lit,
     quoteToken: serializedTokens.wbnb,
@@ -1624,7 +1625,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BDO-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x4288706624e3dD839b069216eB03B8B9819C10d2',
+      56: Pair.getAddress(mainnetTokens.bdo, mainnetTokens.wbnb),
     },
     token: serializedTokens.bdo,
     quoteToken: serializedTokens.wbnb,
@@ -1634,7 +1635,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'EGLD-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xcD68856b6E72E99b5eEaAE7d41Bb4A3b484c700D',
+      56: Pair.getAddress(mainnetTokens.egld, mainnetTokens.wbnb),
     },
     token: serializedTokens.egld,
     quoteToken: serializedTokens.wbnb,
@@ -1644,7 +1645,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'UST-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x05faf555522Fa3F93959F86B41A3808666093210',
+      56: Pair.getAddress(mainnetTokens.ust, mainnetTokens.busd),
     },
     token: serializedTokens.ust,
     quoteToken: serializedTokens.busd,
@@ -1654,7 +1655,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'mAMZN-UST LP',
     lpAddresses: {
       97: '',
-      56: '0xC05654C66756eBB82c518598c5f1ea1a0199a563',
+      56: Pair.getAddress(mainnetTokens.mamzn, mainnetTokens.ust),
     },
     token: serializedTokens.mamzn,
     quoteToken: serializedTokens.ust,
@@ -1664,7 +1665,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'mGOOGL-UST LP',
     lpAddresses: {
       97: '',
-      56: '0xA3BfBbAd526C6B856B1Fdf73F99BCD894761fbf3',
+      56: Pair.getAddress(mainnetTokens.mgoogl, mainnetTokens.ust),
     },
     token: serializedTokens.mgoogl,
     quoteToken: serializedTokens.ust,
@@ -1674,7 +1675,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'mNFLX-UST LP',
     lpAddresses: {
       97: '',
-      56: '0x91417426C3FEaA3Ca795921eB9FdD9715ad92537',
+      56: Pair.getAddress(mainnetTokens.mnflx, mainnetTokens.ust),
     },
     token: serializedTokens.mnflx,
     quoteToken: serializedTokens.ust,
@@ -1684,7 +1685,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'mTSLA-UST LP',
     lpAddresses: {
       97: '',
-      56: '0xEc6b56a736859AE8ea4bEdA16279Ecd8c60dA7EA',
+      56: Pair.getAddress(mainnetTokens.mtsla, mainnetTokens.ust),
     },
     token: serializedTokens.mtsla,
     quoteToken: serializedTokens.ust,
@@ -1694,7 +1695,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'wSOTE-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x7653D2c31440f04d2c6520D482dC5DbD7650f70a',
+      56: Pair.getAddress(mainnetTokens.wsote, mainnetTokens.wbnb),
     },
     token: serializedTokens.wsote,
     quoteToken: serializedTokens.wbnb,
@@ -1704,7 +1705,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'FRONT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xC6b668548aA4A56792e8002A920d3159728121D5',
+      56: Pair.getAddress(mainnetTokens.front, mainnetTokens.wbnb),
     },
     token: serializedTokens.front,
     quoteToken: serializedTokens.wbnb,
@@ -1714,7 +1715,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'Helmet-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xC869A9943b702B03770B6A92d2b2d25cf3a3f571',
+      56: Pair.getAddress(mainnetTokens.helmet, mainnetTokens.wbnb),
     },
     token: serializedTokens.helmet,
     quoteToken: serializedTokens.wbnb,
@@ -1724,7 +1725,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BTCST-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xB2678C414ebC63c9CC6d1a0fC45f43E249B50fdE',
+      56: Pair.getAddress(mainnetTokens.btcst, mainnetTokens.wbnb),
     },
     token: serializedTokens.btcst,
     quoteToken: serializedTokens.wbnb,
@@ -1734,7 +1735,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'LTC-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x71b01eBdDD797c8E9E0b003ea2f4FD207fBF46cC',
+      56: Pair.getAddress(mainnetTokens.ltc, mainnetTokens.wbnb),
     },
     token: serializedTokens.ltc,
     quoteToken: serializedTokens.wbnb,
@@ -1744,7 +1745,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'USDC-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x2354ef4DF11afacb85a5C7f98B624072ECcddbB1',
+      56: Pair.getAddress(mainnetTokens.usdc, mainnetTokens.busd),
     },
     token: serializedTokens.usdc,
     quoteToken: serializedTokens.busd,
@@ -1754,7 +1755,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DAI-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x66FDB2eCCfB58cF098eaa419e5EfDe841368e489',
+      56: Pair.getAddress(mainnetTokens.dai, mainnetTokens.busd),
     },
     token: serializedTokens.dai,
     quoteToken: serializedTokens.busd,
@@ -1764,7 +1765,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BSCX-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x47C42b0A056A9C6e9C65b9Ef79020Af518e767A5',
+      56: Pair.getAddress(mainnetTokens.bscx, mainnetTokens.wbnb),
     },
     token: serializedTokens.bscx,
     quoteToken: serializedTokens.wbnb,
@@ -1774,7 +1775,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TEN-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x1B415C3ec8095AfBF9d78882b3a6263c4ad141B5',
+      56: Pair.getAddress(mainnetTokens.ten, mainnetTokens.wbnb),
     },
     token: serializedTokens.ten,
     quoteToken: serializedTokens.wbnb,
@@ -1784,7 +1785,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'bALBT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x24EB18bA412701f278B172ef96697c4622b19da6',
+      56: Pair.getAddress(mainnetTokens.balbt, mainnetTokens.wbnb),
     },
     token: serializedTokens.balbt,
     quoteToken: serializedTokens.wbnb,
@@ -1794,7 +1795,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'REEF-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xd63b5CecB1f40d626307B92706Df357709D05827',
+      56: Pair.getAddress(mainnetTokens.reef, mainnetTokens.wbnb),
     },
     token: serializedTokens.reef,
     quoteToken: serializedTokens.wbnb,
@@ -1804,7 +1805,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'Ditto-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x8645148dE4E339964bA480AE3478653b5bc6E211',
+      56: Pair.getAddress(mainnetTokens.ditto, mainnetTokens.wbnb),
     },
     token: serializedTokens.ditto,
     quoteToken: serializedTokens.wbnb,
@@ -1814,7 +1815,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'VAI-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x133ee93FE93320e1182923E1a640912eDE17C90C',
+      56: Pair.getAddress(mainnetTokens.vai, mainnetTokens.busd),
     },
     token: serializedTokens.vai,
     quoteToken: serializedTokens.busd,
@@ -1824,7 +1825,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BLK-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x356Dd24BfF8e23BdE0430f00ad0C290E33438bD7',
+      56: Pair.getAddress(mainnetTokens.blink, mainnetTokens.wbnb),
     },
     token: serializedTokens.blink,
     quoteToken: serializedTokens.wbnb,
@@ -1834,7 +1835,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'UNFI-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x44EA47F2765fd5D26b7eF0222736AD6FD6f61950',
+      56: Pair.getAddress(mainnetTokens.unfi, mainnetTokens.wbnb),
     },
     token: serializedTokens.unfi,
     quoteToken: serializedTokens.wbnb,
@@ -1844,7 +1845,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'HARD-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x73566ca86248bD12F0979793e4671e99a40299A7',
+      56: Pair.getAddress(mainnetTokens.hard, mainnetTokens.wbnb),
     },
     token: serializedTokens.hard,
     quoteToken: serializedTokens.wbnb,
@@ -1854,7 +1855,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'CTK-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x460b4193Ec4C1a17372Aa5FDcd44c520ba658646',
+      56: Pair.getAddress(mainnetTokens.ctk, mainnetTokens.wbnb),
     },
     token: serializedTokens.ctk,
     quoteToken: serializedTokens.wbnb,
@@ -1864,7 +1865,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'SXP-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xD8E2F8b6Db204c405543953Ef6359912FE3A88d6',
+      56: Pair.getAddress(mainnetTokens.sxp, mainnetTokens.wbnb),
     },
     token: serializedTokens.sxp,
     quoteToken: serializedTokens.wbnb,
@@ -1874,7 +1875,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'INJ-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x1BdCebcA3b93af70b58C41272AEa2231754B23ca',
+      56: Pair.getAddress(mainnetTokens.inj, mainnetTokens.wbnb),
     },
     token: serializedTokens.inj,
     quoteToken: serializedTokens.wbnb,
@@ -1884,7 +1885,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'FIL-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xD9bCcbbbDFd9d67BEb5d2273102CE0762421D1e3',
+      56: Pair.getAddress(mainnetTokens.fil, mainnetTokens.wbnb),
     },
     token: serializedTokens.fil,
     quoteToken: serializedTokens.wbnb,
@@ -1894,7 +1895,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'UNI-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x014608E87AF97a054C9a49f81E1473076D51d9a3',
+      56: Pair.getAddress(mainnetTokens.uni, mainnetTokens.wbnb),
     },
     token: serializedTokens.uni,
     quoteToken: serializedTokens.wbnb,
@@ -1904,7 +1905,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'YFI-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xCE383277847f8217392eeA98C5a8B4a7D27811b0',
+      56: Pair.getAddress(mainnetTokens.yfi, mainnetTokens.wbnb),
     },
     token: serializedTokens.yfi,
     quoteToken: serializedTokens.wbnb,
@@ -1914,7 +1915,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ATOM-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x468b2DC8DC75990eE3E9dc0648965Ad6294E7914',
+      56: Pair.getAddress(mainnetTokens.atom, mainnetTokens.wbnb),
     },
     token: serializedTokens.atom,
     quoteToken: serializedTokens.wbnb,
@@ -1924,7 +1925,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'XRP-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x03F18135c44C64ebFdCBad8297fe5bDafdBbdd86',
+      56: Pair.getAddress(mainnetTokens.xrp, mainnetTokens.wbnb),
     },
     token: serializedTokens.xrp,
     quoteToken: serializedTokens.wbnb,
@@ -1934,7 +1935,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'USDT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE',
+      56: Pair.getAddress(mainnetTokens.usdt, mainnetTokens.wbnb),
     },
     token: serializedTokens.usdt,
     quoteToken: serializedTokens.wbnb,
@@ -1944,7 +1945,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ALPHA-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xACF47CBEaab5c8A6Ee99263cfE43995f89fB3206',
+      56: Pair.getAddress(mainnetTokens.alpha, mainnetTokens.wbnb),
     },
     token: serializedTokens.alpha,
     quoteToken: serializedTokens.wbnb,
@@ -1954,7 +1955,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BTCB-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x61EB789d75A95CAa3fF50ed7E47b96c132fEc082',
+      56: Pair.getAddress(mainnetTokens.btcb, mainnetTokens.wbnb),
     },
     token: serializedTokens.btcb,
     quoteToken: serializedTokens.wbnb,
@@ -1964,7 +1965,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ETH-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x74E4716E431f45807DCF19f284c7aA99F18a4fbc',
+      56: Pair.getAddress(mainnetTokens.eth, mainnetTokens.wbnb),
     },
     token: serializedTokens.eth,
     quoteToken: serializedTokens.wbnb,
@@ -1974,7 +1975,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'XVS-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x7EB5D86FD78f3852a3e0e064f2842d45a3dB6EA2',
+      56: Pair.getAddress(mainnetTokens.xvs, mainnetTokens.wbnb),
     },
     token: serializedTokens.xvs,
     quoteToken: serializedTokens.wbnb,
@@ -1984,7 +1985,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'TWT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x3DcB1787a95D2ea0Eb7d00887704EeBF0D79bb13',
+      56: Pair.getAddress(mainnetTokens.twt, mainnetTokens.wbnb),
     },
     token: serializedTokens.twt,
     quoteToken: serializedTokens.wbnb,
@@ -1994,7 +1995,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'USDT-BUSD LP',
     lpAddresses: {
       97: '',
-      56: '0x7EFaEf62fDdCCa950418312c6C91Aef321375A00',
+      56: Pair.getAddress(mainnetTokens.usdt, mainnetTokens.busd),
     },
     token: serializedTokens.usdt,
     quoteToken: serializedTokens.busd,
@@ -2004,7 +2005,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'LINK-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x824eb9faDFb377394430d2744fa7C42916DE3eCe',
+      56: Pair.getAddress(mainnetTokens.link, mainnetTokens.wbnb),
     },
     token: serializedTokens.link,
     quoteToken: serializedTokens.wbnb,
@@ -2014,7 +2015,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'EOS-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xB6e34b5C65Eda51bb1BD4ea5F79d385Fb94b9504',
+      56: Pair.getAddress(mainnetTokens.eos, mainnetTokens.wbnb),
     },
     token: serializedTokens.eos,
     quoteToken: serializedTokens.wbnb,
@@ -2024,7 +2025,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'DOT-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0xDd5bAd8f8b360d76d12FdA230F8BAF42fe0022CF',
+      56: Pair.getAddress(mainnetTokens.dot, mainnetTokens.wbnb),
     },
     token: serializedTokens.dot,
     quoteToken: serializedTokens.wbnb,
@@ -2034,7 +2035,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'BAND-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x168B273278F3A8d302De5E879aA30690B7E6c28f',
+      56: Pair.getAddress(mainnetTokens.band, mainnetTokens.wbnb),
     },
     token: serializedTokens.band,
     quoteToken: serializedTokens.wbnb,
@@ -2044,7 +2045,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ADA-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x28415ff2C35b65B9E5c7de82126b4015ab9d031F',
+      56: Pair.getAddress(mainnetTokens.ada, mainnetTokens.wbnb),
     },
     token: serializedTokens.ada,
     quoteToken: serializedTokens.wbnb,

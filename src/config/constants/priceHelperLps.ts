@@ -1,5 +1,8 @@
-import tokens from './tokens'
+import { Pair } from '@pancakeswap/sdk'
+import { mainnetTokens, serializeTokens } from './tokens'
 import { SerializedFarmConfig } from './types'
+
+const serializedTokens = serializeTokens()
 
 const priceHelperLps: SerializedFarmConfig[] = [
   /**
@@ -14,10 +17,10 @@ const priceHelperLps: SerializedFarmConfig[] = [
     lpSymbol: 'QSD-BNB LP',
     lpAddresses: {
       97: '',
-      56: '0x7b3ae32eE8C532016f3E31C8941D937c59e055B9',
+      56: Pair.getAddress(mainnetTokens.qsd, mainnetTokens.wbnb),
     },
-    token: tokens.qsd,
-    quoteToken: tokens.wbnb,
+    token: serializedTokens.qsd,
+    quoteToken: serializedTokens.wbnb,
   },
 ]
 
