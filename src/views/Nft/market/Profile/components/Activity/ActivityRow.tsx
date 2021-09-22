@@ -16,15 +16,16 @@ interface ActivityRowProps {
 }
 
 const ActivityRow: React.FC<ActivityRowProps> = ({ activity, nftMetadata }) => {
+  // Remove ? throughout when askOrderHistory nft is fixed
   return (
     <TableRow>
       <GridItem width="100%">
-        <RoundedImage src={nftMetadata.image.thumbnail} alt={nftMetadata.name} width={64} height={64} mx="16px" />
+        <RoundedImage src={nftMetadata?.image.thumbnail} alt={nftMetadata?.name} width={64} height={64} mx="16px" />
         <Flex flexDirection="column">
           <Text color="textSubtle" fontSize="14px">
-            {nftMetadata.collectionName}
+            {nftMetadata?.collectionName || 'absent'}
           </Text>
-          <Text bold>{nftMetadata.name}</Text>
+          <Text bold>{nftMetadata?.name}</Text>
         </Flex>
       </GridItem>
     </TableRow>

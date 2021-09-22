@@ -169,7 +169,7 @@ export const fetchUserNfts = createAsyncThunk<
 })
 
 export const fetchUserActivity = createAsyncThunk<UserActivity, string>('nft/fetchUserActivity', async (address) => {
-  const userActivity = await getUserActivity({ id: address.toLocaleLowerCase() })
+  const userActivity = await getUserActivity(address.toLocaleLowerCase())
   return userActivity
 })
 

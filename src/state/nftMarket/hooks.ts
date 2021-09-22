@@ -2,19 +2,11 @@ import { useEffect, useState } from 'react'
 import uniqBy from 'lodash/uniqBy'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
-import { ethers } from 'ethers'
 import { pancakeBunniesAddress } from 'views/Nft/market/constants'
 import { isAddress } from 'utils'
 import { fetchCollections, fetchNftsFromCollections } from './reducer'
 import { State } from '../types'
-import {
-  UserNftsState,
-  AskOrder,
-  Transaction,
-  TokenIdWithCollectionAddress,
-  PancakeBunnyNftWithTokens,
-  TokenMarketData,
-} from './types'
+import { UserNftsState, TokenIdWithCollectionAddress, PancakeBunnyNftWithTokens, TokenMarketData } from './types'
 import { getNftsFromDifferentCollectionsApi } from './helpers'
 
 export const useFetchCollections = () => {

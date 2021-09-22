@@ -6,7 +6,7 @@ import { useWeb3React } from '@web3-react/core'
 import { getNftsFromDifferentCollectionsApi } from 'state/nftMarket/helpers'
 import { NftToken, TokenIdWithCollectionAddress } from 'state/nftMarket/types'
 import { useTranslation } from 'contexts/Localization'
-import useFetchUserNfts from '../../hooks/useFetchUserActivity'
+import useFetchUserActivity from '../../hooks/useFetchUserActivity'
 import useUserActivity from '../../hooks/useUserActivity'
 import ActivityRow from './ActivityRow'
 import { TableRow, GridItem, TableLoader } from './TableStyles'
@@ -35,10 +35,11 @@ const Activity = () => {
   const [nftMetadata, setNftMetadata] = useState<NftToken[]>([])
   const sortedUserActivites = useUserActivity()
 
+  useFetchUserActivity(account)
+
   // Can be used when paginating
   // sortedUserActivites.slice(page, itemsPerPage)
 
-  useFetchUserNfts(account)
   const maxPage = 2
 
   useEffect(() => {
@@ -46,14 +47,22 @@ const Activity = () => {
       sortedUserActivites.length > 0
         ? uniqBy(
             sortedUserActivites.map((activity): TokenIdWithCollectionAddress => {
-              return { tokenId: activity.nft.tokenId, collectionAddress: activity.nft.collection.id }
+              // Remove if when askOrderHistory nft is fixed
+              if (activity.nft) {
+                return { tokenId: activity.nft.tokenId, collectionAddress: activity.nft.collection.id }
+              }
+              return null
             }),
             'tokenId',
           )
         : []
 
+    // Remove filteredForNull when askOrderHistory nft is fixed
+    const filteredForNull = activityNftTokenIds.filter((activity) => activity)
+
     const fetchMetadata = async () => {
-      const nfts = await getNftsFromDifferentCollectionsApi(activityNftTokenIds)
+      // Pass activityNftTokenIds when askOrderHistory nft is fixed
+      const nfts = await getNftsFromDifferentCollectionsApi(filteredForNull)
       setNftMetadata(nfts)
     }
 
@@ -96,7 +105,8 @@ const Activity = () => {
           <TableLoader />
         ) : (
           sortedUserActivites.map((activity) => {
-            const nftMeta = nftMetadata.find((metaNft) => metaNft.tokenId === activity.nft.tokenId)
+            // Remove ? after activity & nft when askOrderHistory nft is fixed
+            const nftMeta = nftMetadata.find((metaNft) => metaNft.tokenId === activity?.nft?.tokenId)
             return <ActivityRow activity={activity} nftMetadata={nftMeta} />
           })
         )}

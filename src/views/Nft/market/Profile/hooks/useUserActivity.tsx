@@ -8,11 +8,10 @@ import { AskOrder, Transaction } from 'state/nftMarket/types'
  * @returns
  */
 const useUserActivity = (): (Transaction | AskOrder)[] => {
-  const userNftState = useUserNfts()
-  const [sortedUserActivites, setSortedUserActivities] = useState([])
   const {
     activity: { askOrderHistory, buyTradeHistory, sellTradeHistory },
-  } = userNftState
+  } = useUserNfts()
+  const [sortedUserActivites, setSortedUserActivities] = useState([])
 
   useEffect(() => {
     const allActivity = [...askOrderHistory, ...buyTradeHistory, ...sellTradeHistory]
