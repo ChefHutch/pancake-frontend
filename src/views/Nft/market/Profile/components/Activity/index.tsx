@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { uniqBy } from 'lodash'
-import { Flex, Text, Card, ArrowBackIcon, ArrowForwardIcon } from '@pancakeswap/uikit'
+import { Flex, Text, Card, ArrowBackIcon, ArrowForwardIcon, Table, Th, Td } from '@pancakeswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { getNftsFromDifferentCollectionsApi } from 'state/nftMarket/helpers'
 import { NftToken, TokenIdWithCollectionAddress } from 'state/nftMarket/types'
@@ -9,7 +9,7 @@ import { useTranslation } from 'contexts/Localization'
 import useFetchUserActivity from '../../hooks/useFetchUserActivity'
 import useUserActivity from '../../hooks/useUserActivity'
 import ActivityRow from './ActivityRow'
-import { TableRow, GridItem, TableLoader } from './TableStyles'
+import TableLoader from './TableLoader'
 
 const PageButtons = styled.div`
   width: 100%;
@@ -73,43 +73,29 @@ const Activity = () => {
 
   return (
     <Card>
-      <TableRow>
-        <GridItem>
-          <Text textTransform="uppercase" color="textSubtle" bold fontSize="12px">
-            {t('Item')}
-          </Text>
-        </GridItem>
-        <GridItem justifyContent="flex-end">
-          <Text textTransform="uppercase" color="textSubtle" bold fontSize="12px">
-            {t('Event')}
-          </Text>
-        </GridItem>
-        <GridItem justifyContent="flex-end">
-          <Text textTransform="uppercase" color="textSubtle" bold fontSize="12px">
-            {t('Price')}
-          </Text>
-        </GridItem>
-        <GridItem justifyContent="flex-end">
-          <Text textTransform="uppercase" color="textSubtle" bold fontSize="12px">
-            {t('From/To')}
-          </Text>
-        </GridItem>
-        <GridItem justifyContent="center">
-          <Text textTransform="uppercase" color="textSubtle" bold fontSize="12px">
-            {t('Date')}
-          </Text>
-        </GridItem>
-      </TableRow>
+      <Table>
+        <thead>
+          <tr>
+            <Th textAlign="left"> {t('Item')}</Th>
+            <Th textAlign="right"> {t('Event')}</Th>
+            <Th textAlign="right"> {t('Price')}</Th>
+            <Th textAlign="right"> {t('From/To')}</Th>
+            <Th textAlign="center"> {t('Date')}</Th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedUserActivites.length === 0 || nftMetadata.length === 0 ? (
+            <TableLoader />
+          ) : (
+            sortedUserActivites.map((activity) => {
+              // Remove ? after activity & nft when askOrderHistory nft is fixed
+              const nftMeta = nftMetadata.find((metaNft) => metaNft.tokenId === activity?.nft?.tokenId)
+              return <ActivityRow activity={activity} nftMetadata={nftMeta} />
+            })
+          )}
+        </tbody>
+      </Table>
       <Flex flexDirection="column" justifyContent="space-between" height="100%">
-        {sortedUserActivites.length === 0 || nftMetadata.length === 0 ? (
-          <TableLoader />
-        ) : (
-          sortedUserActivites.map((activity) => {
-            // Remove ? after activity & nft when askOrderHistory nft is fixed
-            const nftMeta = nftMetadata.find((metaNft) => metaNft.tokenId === activity?.nft?.tokenId)
-            return <ActivityRow activity={activity} nftMetadata={nftMeta} />
-          })
-        )}
         <PageButtons>
           <Arrow
             onClick={() => {
